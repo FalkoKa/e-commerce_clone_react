@@ -1,8 +1,11 @@
 import SearchIcon from '@mui/icons-material/Search';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
+import { useState } from 'react';
 
 export default function Search() {
+  const [search, setSearch] = useState('');
+
   const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -45,8 +48,13 @@ export default function Search() {
     },
   }));
 
+  const handleChange = (e) => {
+    console.log(e.target.value);
+    setSearch(e.target.value);
+  };
+
   return (
-    <Search>
+    <Search onChange={handleChange}>
       <SearchIconWrapper>
         <SearchIcon />
       </SearchIconWrapper>
