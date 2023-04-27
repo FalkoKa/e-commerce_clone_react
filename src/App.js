@@ -11,6 +11,7 @@ import CheckoutSuccess from './pages/Checkout_success';
 import OrderConfirm from './pages/Order_confirmation';
 import Home from './pages/Home';
 import Welcome from './pages/Welcome';
+import About from './pages/About';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/checkout/confirm" element={<OrderConfirm />} />
           <Route path="/order/:id" element={<CheckoutSuccess />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </BrowserRouter>
     </>

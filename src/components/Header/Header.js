@@ -5,9 +5,9 @@ export default function Header() {
   return (
     <header>
       <div className="container-width-85">
-        <Link>Help and contact</Link>
-        <Link>FREE DELIEVERY & RETURNS</Link>
-        <Link>100-day return policy</Link>
+        <Link to={'/about'}>Help and contact</Link>
+        <Link to={'/about'}>FREE DELIEVERY & RETURNS</Link>
+        <Link to={'/about'}>100-day return policy</Link>
       </div>
     </header>
   );

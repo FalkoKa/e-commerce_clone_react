@@ -32,3 +32,20 @@ a {
   width: 85%;
   margin: 0 auto;
 }
+
+.about {
+  display: flex;
+  margin-top: 0px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
+
+.about * {
+  margin: 20px;
+}
+
+.about a {
+  text-decoration: underline;
+}

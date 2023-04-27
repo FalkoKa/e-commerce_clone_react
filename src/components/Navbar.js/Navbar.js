@@ -19,13 +19,13 @@ export default function Navbar(props) {
         <h3 style={{ display: 'inline' }}>eC_Clone</h3>
       </div>
       <nav>
-        <Link to={'login'}>
+        <Link to={'/login'}>
           <CiUser size={25} />
         </Link>
         <Link to={''}>
           <CiHeart size={25} />
         </Link>
-        <Link to={'cart'}>
+        <Link to={'/cart'}>
           <CiShoppingCart size={25} />
         </Link>
       </nav>
