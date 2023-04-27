@@ -1,0 +1,22 @@
+.footer-two {
+  background-color: rgb(26, 26, 26);
+  color: white;
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-two p {
+  margin: 25px;
+}
+
+.tax-info {
+  font-size: 0.8rem;
+}
+
+.footer-two a {
+  font-size: 0.8rem;
+  color: white;
+  text-decoration: underline;
+}
