@@ -8,7 +8,11 @@ export default function Navbar(props) {
     <div className="nav container-width-85">
       <div className="logo">
         <img
-          style={{ height: '50px', display: 'inline' }}
+          style={{
+            height: '50px',
+            display: 'inline',
+            transform: 'rotate(90deg)',
+          }}
           src={logo}
           alt="logo"
         />
