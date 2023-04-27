@@ -7,12 +7,12 @@ export default function CategoriesNav(props) {
     <div className="cat-nav container-width-85">
       <nav>
         <Link>NEW IN</Link>
-        <Link>Clothing</Link>
-        <Link>Shoes</Link>
-        <Link>Sports</Link>
-        <Link>Brands</Link>
-        <Link>Accessories</Link>
-        <Link>Sale %</Link>
+        <Link to={'/Clothing'}>Clothing</Link>
+        <Link to={'/Shoes'}>Shoes</Link>
+        <Link to={'/Sports'}>Sports</Link>
+        <Link to={'/Brands'}>Brands</Link>
+        <Link to={'/Accessories'}>Accessories</Link>
+        <Link to={'/Sale'}>Sale %</Link>
       </nav>
       <Search />
     </div>

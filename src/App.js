@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Category from './pages/Category';
 import Product from './pages/Product';
-import Login from './pages/Login';
+import Login from './pages/Login/Login';
 import Signup from './pages/Signup';
 import ShoppingCart from './pages/Shopping_cart';
 import SearchResults from './pages/Search_results';
