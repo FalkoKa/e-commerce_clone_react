@@ -1,0 +1,10 @@
+.cat-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cat-nav nav {
+  display: flex;
+  gap: 15px;
+}

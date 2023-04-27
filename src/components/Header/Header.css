@@ -1,0 +1,19 @@
+header .container-width-85 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #efeff0;
+  height: 30px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+header a {
+  color: #717171;
+}

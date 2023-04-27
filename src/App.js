@@ -1,10 +1,36 @@
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Category from './pages/Category';
+import Product from './pages/Product';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import ShoppingCart from './pages/Shopping_cart';
+import SearchResults from './pages/Search_results';
+import Checkout from './pages/Checkout';
+import CheckoutSuccess from './pages/Checkout_success';
+import OrderConfirm from './pages/Order_confirmation';
+import Home from './pages/Home';
+import Welcome from './pages/Welcome';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello</h1>
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Welcome />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/:category" element={<Category />} />
+          <Route path="/:category/:id" element={<Product />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/cart" element={<ShoppingCart />} />
+          <Route path="/search/:query" element={<SearchResults />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/checkout/confirm" element={<OrderConfirm />} />
+          <Route path="/order/:id" element={<CheckoutSuccess />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
