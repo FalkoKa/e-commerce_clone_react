@@ -1,0 +1,42 @@
+.item img {
+  width: 100px;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+}
+
+.item-summary {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+}
+
+.item button {
+  display: flex;
+  align-items: center;
+  border: none;
+  background-color: white;
+  opacity: 0.5;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.item .price {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.price select {
+  padding: 10px;
+  width: 100px;
+}
+
+.price select:hover {
+  box-shadow: inset 0px 0px 0px 2px black;
+}
+
+.item p {
+  margin: 5px;
+}
