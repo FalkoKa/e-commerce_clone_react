@@ -3,7 +3,7 @@ import './Header.css';
 
 export default function Header() {
   return (
-    <header>
+    <header className="highest-header">
       <div className="container-width-85">
         <Link to={'/about'}>Help and contact</Link>
         <Link to={'/about'}>FREE DELIEVERY & RETURNS</Link>

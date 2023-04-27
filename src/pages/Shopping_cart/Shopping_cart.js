@@ -38,9 +38,9 @@ export default function ShoppingCart(props) {
             <span>29.99 $</span>
           </div>
 
-          <div className="checkout-link">
-            <Link to={'/checkout'}>GO TO CHECKOUT</Link>
-          </div>
+          <Link to={'/checkout/confirm'}>
+            <div className="checkout-link">GO TO CHECKOUT</div>
+          </Link>
         </div>
 
         <div className="accepted-payment">

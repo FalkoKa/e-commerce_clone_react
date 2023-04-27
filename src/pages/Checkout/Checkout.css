@@ -1,0 +1,17 @@
+.order-confirmation {
+  background-color: white;
+}
+
+.order-confirmation-link {
+  background-color: #ff4e00;
+  padding: 12px;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+.stepper-wrapper {
+  margin: 20px;
+}
