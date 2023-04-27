@@ -2,6 +2,7 @@ import Navbar from '../components/Navbar.js/Navbar';
 import CategoriesNav from '../components/Categories_nav/Categories_nav';
 import Slideshow from '../components/Slideshow/Slideshow';
 import Header from '../components/Header/Header';
+import FooterOne from '../components/Footer_one/Footer_one';
 
 export default function Home(props) {
   const slides = [
@@ -38,6 +39,7 @@ export default function Home(props) {
         <h3>Out top brands</h3>
         <h3>Out top categories</h3>
       </div>
+      <FooterOne />
     </>
   );
 }

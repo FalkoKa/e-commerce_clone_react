@@ -4,6 +4,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
 import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import LockRoundedIcon from '@mui/icons-material/LockRounded';
+import GroupRoundedIcon from '@mui/icons-material/GroupRounded';
 import './../Login/Login.css';
 import { Link } from 'react-router-dom';
 import Logo from './../../components/Logo/Logo';
@@ -26,7 +27,7 @@ export default function Signup(props) {
                 id="fullName"
                 endAdornment={
                   <InputAdornment position="end">
-                    <EmailRoundedIcon />
+                    <GroupRoundedIcon />
                   </InputAdornment>
                 }
               />
