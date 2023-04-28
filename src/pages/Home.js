@@ -4,8 +4,21 @@ import Slideshow from '../components/Slideshow/Slideshow';
 import Header from '../components/Header/Header';
 import FooterOne from '../components/Footer_one/Footer_one';
 import FooterTwo from '../components/Fotter_two/Footer_two';
+import ProductCard from '../components/ProductCard/ProductCard';
+import Brands from '../components/Brands/Brands';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 export default function Home(props) {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    axios.get('/api/v1/product').then((res) => {
+      console.log(res.data.products);
+      setProducts(res.data.products);
+    });
+  }, []);
+
   const slides = [
     {
       url: 'https://img01.ztat.net/article/spp-media-p1/b8270a19bed1473a8592f8547bc694b8/932257e5293a47cfb7dce132f204390c.jpg?imwidth=1800&filter=packshot',
@@ -42,7 +55,14 @@ export default function Home(props) {
       <Slideshow slides={slides} />
 
       <div className="category container-width-85">
-        <h3>Our brands</h3>
+        <h3>Our most popular brands</h3>
+        <Brands />
+        <h3>Products</h3>
+        <div className="product-grid">
+          {products.map((product) => (
+            <ProductCard product={product} />
+          ))}
+        </div>
       </div>
       <FooterOne />
       <FooterTwo />

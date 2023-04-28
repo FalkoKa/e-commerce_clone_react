@@ -1,0 +1,15 @@
+.brand-container {
+  margin: 25px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.brand-container .brand {
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: 130px;
+}

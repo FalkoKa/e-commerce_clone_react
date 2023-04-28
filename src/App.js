@@ -1,13 +1,12 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Category from './pages/Category';
-import Product from './pages/Product';
+import ProductDetails from './pages/Product_details';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import ShoppingCart from './pages/Shopping_cart/Shopping_cart';
 import SearchResults from './pages/Search_results';
 import CheckoutSuccess from './pages/Checkout/Checkout_success';
-import OrderConfirm from './pages/Checkout/Order_confirmation';
 import Home from './pages/Home';
 import Welcome from './pages/Welcome';
 import About from './pages/About';
@@ -21,7 +20,7 @@ function App() {
           <Route path="/" element={<Welcome />} />
           <Route path="/home" element={<Home />} />
           <Route path="/:category" element={<Category />} />
-          <Route path="/:category/:id" element={<Product />} />
+          <Route path="/:category/:id" element={<ProductDetails />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/cart" element={<ShoppingCart />} />

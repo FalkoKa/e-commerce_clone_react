@@ -4,7 +4,6 @@ import Navbar from '../../components/Navbar.js/Navbar';
 import CategoriesNav from '../../components/Categories_nav/Categories_nav';
 import FooterOne from '../../components/Footer_one/Footer_one';
 import FooterTwo from '../../components/Fotter_two/Footer_two';
-import { Link } from 'react-router-dom';
 import Item from '../../components/Item/Item';
 import creditCardImg from './../../images/credit_card_white.png';
 import OrderTotal from '../../components/Order_total/Order_total';

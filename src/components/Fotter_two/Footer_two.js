@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import './Footer_two.css';
-import GitHubIcon from '@mui/icons-material/GitHub';
 import { AiFillGithub } from 'react-icons/ai';
 
 export default function FooterTwo() {
