@@ -43,14 +43,13 @@ export default function OrderConfirmation({ handleNext }) {
           <span>29.99 $</span>
         </div>
 
-        <Link to={'/checkout/confirm'}>
-          <div
-            style={{ width: '250px', margin: '20px auto' }}
-            className="checkout-link"
-          >
-            PLACE YOUR ORDER
-          </div>
-        </Link>
+        <div
+          onClick={handleNext}
+          style={{ width: '250px', margin: '20px auto' }}
+          className="checkout-link"
+        >
+          PLACE YOUR ORDER
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import './Checkout.css';
 import Logo from '../../components/Logo/Logo';
 import { useState } from 'react';
@@ -8,6 +7,7 @@ import StepLabel from '@mui/material/StepLabel';
 import OrderConfirmation from './Order_confirmation';
 import Address from '../../components/Address/Address';
 import PaymentMethod from '../../components/Payment_method/Payment_method';
+import CheckoutSuccess from './Checkout_success';
 
 const steps = ['Login', 'Address', 'Payment', 'Confirm', 'Done!'];
 
@@ -38,9 +38,10 @@ export default function Checkout(props) {
             })}
           </Stepper>
         </div>
-        {/* <OrderConfirmation handleNext={handleNext} /> */}
-        {/* <Address handleNext={handleNext} /> */}
-        <PaymentMethod handleNext={handleNext} />
+        {activeStep === 1 ? <Address handleNext={handleNext} /> : ''}
+        {activeStep === 2 ? <PaymentMethod handleNext={handleNext} /> : ''}
+        {activeStep === 3 ? <OrderConfirmation handleNext={handleNext} /> : ''}
+        {activeStep === 4 ? <CheckoutSuccess /> : ''}
       </div>
     </>
   );

@@ -17,7 +17,7 @@ export default function OrderTotal(props) {
         <span>29.99 $</span>
       </div>
 
-      <Link to={'/checkout/confirm'}>
+      <Link to={'/checkout'}>
         <div className="checkout-link">GO TO CHECKOUT</div>
       </Link>
     </div>
