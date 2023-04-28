@@ -7,6 +7,7 @@ import FooterTwo from '../../components/Fotter_two/Footer_two';
 import { Link } from 'react-router-dom';
 import Item from '../../components/Item/Item';
 import creditCardImg from './../../images/credit_card_white.png';
+import OrderTotal from '../../components/Order_total/Order_total';
 
 export default function ShoppingCart(props) {
   return (
@@ -23,25 +24,7 @@ export default function ShoppingCart(props) {
           <Item />
         </div>
 
-        <div className="order-total">
-          <h3>Total</h3>
-          <div className="flex">
-            <span>Subtotal</span>
-            <span>29.99 $</span>
-          </div>
-          <div className="flex">
-            <span>Delivery</span>
-            <span>0.00 $</span>
-          </div>
-          <div className="flex">
-            <span>Total (VAT included</span>
-            <span>29.99 $</span>
-          </div>
-
-          <Link to={'/checkout/confirm'}>
-            <div className="checkout-link">GO TO CHECKOUT</div>
-          </Link>
-        </div>
+        <OrderTotal />
 
         <div className="accepted-payment">
           <h3>We accept</h3>

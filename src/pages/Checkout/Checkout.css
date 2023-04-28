@@ -2,6 +2,10 @@
   background-color: white;
 }
 
+.container-width-60 {
+  width: 60%;
+  margin: 0 auto;
+}
 .order-confirmation-link {
   background-color: #ff4e00;
   padding: 12px;
@@ -10,8 +14,24 @@
   font-weight: bold;
   color: white;
   cursor: pointer;
+  width: 230px;
 }
 
 .stepper-wrapper {
   margin: 20px;
+}
+
+.order-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid grey;
+  padding-bottom: 20px;
+}
+
+.order-confirmation .grid-wrapper {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 15px;
 }

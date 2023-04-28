@@ -6,12 +6,12 @@ import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import ShoppingCart from './pages/Shopping_cart/Shopping_cart';
 import SearchResults from './pages/Search_results';
-import Checkout from './pages/Checkout/Checkout';
 import CheckoutSuccess from './pages/Checkout/Checkout_success';
 import OrderConfirm from './pages/Checkout/Order_confirmation';
 import Home from './pages/Home';
 import Welcome from './pages/Welcome';
 import About from './pages/About';
+import Checkout from './pages/Checkout/Checkout';
 
 function App() {
   return (
@@ -27,7 +27,6 @@ function App() {
           <Route path="/cart" element={<ShoppingCart />} />
           <Route path="/search/:query" element={<SearchResults />} />
           <Route path="/checkout" element={<Checkout />} />
-          <Route path="/checkout/confirm" element={<OrderConfirm />} />
           <Route path="/order/:id" element={<CheckoutSuccess />} />
           <Route path="/about" element={<About />} />
         </Routes>

@@ -1,46 +1,56 @@
 import { Link } from 'react-router-dom';
-import './Checkout.css';
-import Logo from '../../components/Logo/Logo';
-import { useState } from 'react';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
+import ConfirmationSidebar from '../../components/ConfirmationSidebar/Confirmation_sidebar';
+import Item from '../../components/Item/Item';
 
-const steps = ['Login', 'Confrim', 'Done!'];
-
-export default function OrderConfirm(props) {
-  const [activeStep, setActiveStep] = useState(1);
-  const [skipped, setSkipped] = useState(new Set());
-
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
+export default function OrderConfirmation({ handleNext }) {
   return (
     <div className="order-confirmation">
-      <div className="container-width-85">
-        <Logo />
-
-        <header className="order-conformation">
-          <div className="stepper-wrapper">
-            <Stepper activeStep={activeStep}>
-              {steps.map((label, index) => {
-                const stepProps = {};
-                const labelProps = {};
-                return (
-                  <Step key={label} {...stepProps}>
-                    <StepLabel {...labelProps}>{label}</StepLabel>
-                  </Step>
-                );
-              })}
-            </Stepper>
-          </div>
+      <header className="order-conformation">
+        <div className="order-summary">
           <h3>ORDER SUMMARY</h3>
 
           <div onClick={handleNext} className="order-confirmation-link">
             PLACE YOUR ORDER
           </div>
-        </header>
+        </div>
+      </header>
+      <div className="grid-wrapper">
+        <div
+          style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}
+          className="item-wrapper"
+        >
+          <Item />
+          <Item />
+          <Item />
+        </div>
+        <ConfirmationSidebar />
+      </div>
+      <div
+        style={{
+          backgroundColor: '#f3f3f3',
+          padding: '20px',
+          width: '70%',
+          margin: '20px auto',
+        }}
+        className="order-total"
+      >
+        <div className="flex">
+          <span>Delivery</span>
+          <span>0.00 $</span>
+        </div>
+        <div className="flex">
+          <span>Total (VAT included)</span>
+          <span>29.99 $</span>
+        </div>
+
+        <Link to={'/checkout/confirm'}>
+          <div
+            style={{ width: '250px', margin: '20px auto' }}
+            className="checkout-link"
+          >
+            PLACE YOUR ORDER
+          </div>
+        </Link>
       </div>
     </div>
   );
