@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import ConfirmationSidebar from '../../components/ConfirmationSidebar/Confirmation_sidebar';
 import Item from '../../components/Item/Item';
 

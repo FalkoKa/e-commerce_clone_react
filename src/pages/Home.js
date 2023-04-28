@@ -8,24 +8,29 @@ import FooterTwo from '../components/Fotter_two/Footer_two';
 export default function Home(props) {
   const slides = [
     {
-      url: 'https://raw.githubusercontent.com/monsterlessonsacademy/monsterlessonsacademy/221-react-image-slider/public/image-1.jpg',
-      title: 'Test',
+      url: 'https://img01.ztat.net/article/spp-media-p1/b8270a19bed1473a8592f8547bc694b8/932257e5293a47cfb7dce132f204390c.jpg?imwidth=1800&filter=packshot',
+      title: 'AIR MAX 90 - Trainers',
+      text: 'WOw, nice shoes',
     },
     {
-      url: 'https://raw.githubusercontent.com/monsterlessonsacademy/monsterlessonsacademy/221-react-image-slider/public/image-2.jpg',
-      title: 'Test',
+      url: 'https://img01.ztat.net/article/spp-media-p1/db9331558ae94f83a3d27f1b1e657e02/73247a5d5b384b00986cda9d3466809e.jpg?imwidth=762',
+      title: 'NIKE DUNK LOW NDDC - Trainers',
+      text: 'WOw, I love NIKE!',
     },
     {
-      url: 'https://raw.githubusercontent.com/monsterlessonsacademy/monsterlessonsacademy/221-react-image-slider/public/image-3.jpg',
-      title: 'Test',
+      url: 'https://img01.ztat.net/article/spp-media-p1/2188990921544ba5a5e2781389fce8e1/c56fbedda22f4e068b13128b02f5a50e.jpg?imwidth=1800',
+      title: 'SIGNATURE TEE - Basic T-shirt',
+      text: 'WOw, What a great shirt',
     },
     {
-      url: 'https://raw.githubusercontent.com/monsterlessonsacademy/monsterlessonsacademy/221-react-image-slider/public/image-4.jpg',
-      title: 'Test',
+      url: 'https://img01.ztat.net/article/spp-media-p1/4a87b7fe388e4bfa95da015cb816d869/698820b89b104de5973c24e50e250457.jpg?imwidth=1800&filter=packshot',
+      title: 'PANDA BÄR AUFDRUCK TIERMOTIV MIT SONNE - Print T-shirt',
+      text: 'WOw, What a great shirt',
     },
     {
-      url: 'https://raw.githubusercontent.com/monsterlessonsacademy/monsterlessonsacademy/221-react-image-slider/public/image-5.jpg',
-      title: 'Test',
+      url: 'https://img01.ztat.net/article/spp-media-p1/a71aebc276324ea99d6f18ecd6922e69/1bf776c1cdcf49d0a4e171905b050aed.jpg?imwidth=1800&filter=packshot',
+      title: `AIR FORCE 1 '07 - Trainers`,
+      text: `That's why Nike Members who link their accounts on Zalando get first and exclusive access to hot drops, with new products added every two weeks.`,
     },
   ];
 
@@ -37,8 +42,7 @@ export default function Home(props) {
       <Slideshow slides={slides} />
 
       <div className="category container-width-85">
-        <h3>Out top brands</h3>
-        <h3>Out top categories</h3>
+        <h3>Our brands</h3>
       </div>
       <FooterOne />
       <FooterTwo />

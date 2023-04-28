@@ -87,9 +87,14 @@ export default function Slideshow({ slides }) {
           </div>
           <div style={slideStyles}></div>
         </div>
-        <h1 style={{ color: 'white', textAlign: 'center', margin: 'auto' }}>
-          Check out our newest products
-        </h1>
+        <div
+          style={{ color: 'white', textAlign: 'center', margin: 'auto' }}
+          className="news-info"
+        >
+          <h3>Check out our latest products</h3>
+          <h2>{slides[currentIndex].title}</h2>
+          <p>{slides[currentIndex].text}</p>
+        </div>
       </div>
     </div>
   );
