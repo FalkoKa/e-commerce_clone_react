@@ -1,0 +1,25 @@
+.product-details {
+  margin: 30px auto;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 70px;
+}
+
+.product-details .product-img img {
+  width: 100%;
+}
+
+.product-details .product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.product-details .controlls {
+  display: flex;
+  gap: 10px;
+}
+
+.product-details .order-confirmation-link {
+  flex: 1;
+}

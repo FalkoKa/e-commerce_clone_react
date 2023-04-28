@@ -1,0 +1,90 @@
+import Header from '../../components/Header/Header';
+import NavBar from '../../components/Navbar.js/Navbar';
+import CategoryNav from '../../components/Categories_nav/Categories_nav';
+import FooterOne from '../../components/Footer_one/Footer_one';
+import FooterTwo from '../../components/Fotter_two/Footer_two';
+import RatingStars from '../../components/RatingStars/RatingStars';
+import FavoriteListIcon from '../../components/FavoriteListIcon';
+import Rating from '@mui/material/Rating';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import './Product_details.css';
+
+const availability = (inStock) => {
+  if (inStock === 0) {
+    return 'Item sold out';
+  } else if (inStock < 10) {
+    return 'Almost out of stock';
+  } else {
+    return 'Item in Stock';
+  }
+};
+
+export default function ProcutDetails() {
+  let product = useParams();
+
+  const [item, setItem] = useState(null);
+  const [hasPurchased, setHasPurchased] = useState(false);
+  const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    axios
+      .get(`/api/v1/product/${product.id}`)
+      .then((res) => setItem(res.data.product));
+  }, [product.id]);
+
+  return (
+    <>
+      <Header />
+      <NavBar />
+      <CategoryNav />
+      {item && (
+        <div className="product-details container-width-85">
+          <div className="product-img">
+            <img src={item.images[0]} alt="Product" />
+          </div>
+          <div className="product-info">
+            <h2>{item.brand}</h2>
+            <h1>{item.name}</h1>
+            <h3>{item.price} USD</h3>
+            {!hasPurchased ? (
+              <RatingStars numReviews={item.numReviews} rating={item.rating} />
+            ) : (
+              <p
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  margin: '8px 0',
+                }}
+              >
+                <Rating
+                  value={value}
+                  onChange={(event, newValue) => {
+                    setValue(newValue);
+                  }}
+                  precision={0.5}
+                  size="large"
+                  style={{ color: 'black' }}
+                />
+                {item.numReviews}
+              </p>
+            )}
+            <div className="controlls">
+              <FavoriteListIcon
+                position={'relative'}
+                size={{ size: 40, width: '40px' }}
+              />
+              <div className="order-confirmation-link">Add to cart</div>
+            </div>
+            <p>{availability(item.inStock)}</p>
+          </div>
+          <button onClick={() => setHasPurchased(!hasPurchased)}>bought</button>
+        </div>
+      )}
+      <FooterOne />
+      <FooterTwo />
+    </>
+  );
+}
