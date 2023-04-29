@@ -6,13 +6,13 @@ import FormControl from '@mui/material/FormControl';
 import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import LockRoundedIcon from '@mui/icons-material/LockRounded';
 import './Login.css';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useState, useContext } from 'react';
 import { userLogin } from '../../utils/user_api';
 import { userContext } from './../../userConext';
 
 export default function Login() {
-  const { login } = useContext(userContext);
+  const { user, login } = useContext(userContext);
   const [formData, setFormData] = useState({});
   const [error, setError] = useState('');
 
@@ -39,6 +39,12 @@ export default function Login() {
     setError('');
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  const navigate = useNavigate();
+
+  if (user) {
+    return <Navigate to="/home" replace />;
+  }
 
   return (
     <div className="container-width-85">
