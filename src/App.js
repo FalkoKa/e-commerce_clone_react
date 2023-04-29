@@ -11,6 +11,7 @@ import Home from './pages/Home';
 import Welcome from './pages/Welcome';
 import About from './pages/About';
 import Checkout from './pages/Checkout/Checkout';
+import Protected from './utils/protectedRoute';
 
 function App() {
   return (
@@ -25,7 +26,14 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/cart" element={<ShoppingCart />} />
           <Route path="/search/:query" element={<SearchResults />} />
-          <Route path="/checkout" element={<Checkout />} />
+          <Route
+            path="/checkout"
+            element={
+              <Protected>
+                <Checkout />
+              </Protected>
+            }
+          />
           <Route path="/order/:id" element={<CheckoutSuccess />} />
           <Route path="/about" element={<About />} />
         </Routes>
