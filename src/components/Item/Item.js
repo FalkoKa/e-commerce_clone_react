@@ -55,7 +55,7 @@ export default function Item({ item }) {
           <option value={9}>9</option>
           <option value={10}>10</option>
         </select>
-        <p>{item.price} USD</p>
+        <p>{item.price.toFixed(2)} USD</p>
       </div>
     </div>
   );
