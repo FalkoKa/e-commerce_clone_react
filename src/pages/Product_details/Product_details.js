@@ -9,6 +9,8 @@ import Rating from '@mui/material/Rating';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useContext } from 'react';
+import { userContext } from '../../userConext';
 import './Product_details.css';
 
 const availability = (inStock) => {
@@ -23,6 +25,7 @@ const availability = (inStock) => {
 
 export default function ProcutDetails() {
   let product = useParams();
+  let { user, setCart, cart } = useContext(userContext);
 
   const [item, setItem] = useState(null);
   const [hasPurchased, setHasPurchased] = useState(false);
@@ -33,6 +36,14 @@ export default function ProcutDetails() {
       .get(`/api/v1/product/${product.id}`)
       .then((res) => setItem(res.data.product));
   }, [product.id]);
+
+  const addToCart = (e) => {
+    axios
+      .post(`/api/v1/cart/${user._id}`, { itemId: product.id })
+      .then((res) => {
+        setCart(res.data.items);
+      });
+  };
 
   return (
     <>
@@ -76,7 +87,9 @@ export default function ProcutDetails() {
                 position={'relative'}
                 size={{ size: 40, width: '40px' }}
               />
-              <div className="order-confirmation-link">Add to cart</div>
+              <div onClick={addToCart} className="order-confirmation-link">
+                Add to cart
+              </div>
             </div>
             <p>{availability(item.inStock)}</p>
           </div>

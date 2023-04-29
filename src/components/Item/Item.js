@@ -1,29 +1,49 @@
+import { useState, useContext } from 'react';
 import './Item.css';
 import DeleteIcon from '@mui/icons-material/Delete';
+import axios from 'axios';
+import { userContext } from '../../userConext';
 
-export default function Item(props) {
+export default function Item({ item }) {
+  let { user, setCart } = useContext(userContext);
+
+  const [quantity, setQuantity] = useState(1);
+
+  const changeQuantity = (e) => {
+    setQuantity(e.target.value);
+  };
+
+  const removeFromCart = (e) => {
+    if (user) {
+      axios
+        .delete(`/api/v1/cart/${user._id}`, { data: { itemId: item._id } })
+        .then((res) => {
+          setCart(res.data.items);
+        });
+    } else {
+      return; // later remove from local storage
+    }
+  };
+
   return (
     <div className="item">
       <div className="item-summary">
-        <img
-          src="https://img01.ztat.net/article/spp-media-p1/d04459c1e3af42859c371ef15953686b/cfd85f61ba184247915f17ea74810936.jpg?imwidth=1800"
-          alt="item"
-        />
+        <img src={item.images[0]} />
         <div className="item-info">
-          <h4>Title</h4>
-          <p>
-            Description Lorem, ipsum dolor sit amet consectetur adipisicing
-            elit. Nam quisquam accusamus, voluptate expedita.
-          </p>
-          <p>Color: red</p>
-          <p>Size: 23</p>
-          <button>
+          <h4>{item.name}</h4>
+          <p>{item.description}</p>
+          <button onClick={removeFromCart}>
             <DeleteIcon /> <span>Remove</span>
           </button>
         </div>
       </div>
       <div className="price">
-        <select name="quantity" id="quantity">
+        <select
+          onChange={changeQuantity}
+          name="quantity"
+          id="quantity"
+          value={quantity}
+        >
           <option value={1}>1</option>
           <option value={2}>2</option>
           <option value={3}>3</option>
@@ -35,7 +55,7 @@ export default function Item(props) {
           <option value={9}>9</option>
           <option value={10}>10</option>
         </select>
-        <p>29.99 $</p>
+        <p>{item.price} USD</p>
       </div>
     </div>
   );

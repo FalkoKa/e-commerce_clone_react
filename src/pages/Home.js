@@ -14,7 +14,6 @@ export default function Home(props) {
 
   useEffect(() => {
     axios.get('/api/v1/product').then((res) => {
-      console.log(res.data.products);
       setProducts(res.data.products);
     });
   }, []);
