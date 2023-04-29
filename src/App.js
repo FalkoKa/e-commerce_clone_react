@@ -12,6 +12,7 @@ import Welcome from './pages/Welcome';
 import About from './pages/About';
 import Checkout from './pages/Checkout/Checkout';
 import Protected from './utils/protectedRoute';
+import Profile from './pages/Profile/Profile';
 
 function App() {
   return (
@@ -26,6 +27,14 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/cart" element={<ShoppingCart />} />
           <Route path="/search/:query" element={<SearchResults />} />
+          <Route
+            path="/myaccount"
+            element={
+              <Protected>
+                <Profile />
+              </Protected>
+            }
+          />
           <Route
             path="/checkout"
             element={
