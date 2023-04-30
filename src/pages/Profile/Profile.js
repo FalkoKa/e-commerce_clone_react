@@ -3,6 +3,7 @@ import NavBar from './../../components/Navbar.js/Navbar';
 import CategoriesNav from '../../components/Categories_nav/Categories_nav';
 import { useContext } from 'react';
 import { userContext } from '../../userConext';
+import OrderSummary from './../../components/Order_summary/OrderSummary';
 
 export default function Profile(props) {
   const { user } = useContext(userContext);
@@ -14,6 +15,7 @@ export default function Profile(props) {
       <CategoriesNav />
       <div className="profile container-width-85">
         <h1>Your Profile {user.name} </h1>
+        <OrderSummary />
       </div>
     </>
   );
