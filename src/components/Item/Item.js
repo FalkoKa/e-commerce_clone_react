@@ -9,10 +9,6 @@ export default function Item({ item, quant }) {
 
   const [quantity, setQuantity] = useState(quant);
 
-  console.log('quant: ' + quant);
-  console.log('quantity : ' + quantity);
-  // console.log('quant: ' + quant)
-
   const changeQuantity = (e) => {
     setQuantity(e.target.value);
 

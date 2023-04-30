@@ -64,7 +64,6 @@ export default function ProcutDetails() {
         }
       } else {
         let itemLocalStorage = [{ quantity: 1, item: item }];
-        console.log(itemLocalStorage);
         localStorage.setItem('cartLocal', JSON.stringify(itemLocalStorage));
       }
     }
@@ -112,9 +111,18 @@ export default function ProcutDetails() {
                 position={'relative'}
                 size={{ size: 40, width: '40px' }}
               />
-              <div onClick={addToCart} className="order-confirmation-link">
-                Add to cart
-              </div>
+              {item.inStock === 0 ? (
+                <div
+                  style={{ backgroundColor: 'grey' }}
+                  className="order-confirmation-link"
+                >
+                  Add to cart
+                </div>
+              ) : (
+                <div onClick={addToCart} className="order-confirmation-link">
+                  Add to cart
+                </div>
+              )}
             </div>
             <p>{availability(item.inStock)}</p>
           </div>
