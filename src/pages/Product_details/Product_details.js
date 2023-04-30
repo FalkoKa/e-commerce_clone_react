@@ -47,8 +47,21 @@ export default function ProcutDetails() {
     } else {
       if (localStorage.getItem('cartLocal') !== null) {
         let itemInLocalStorage = JSON.parse(localStorage.getItem('cartLocal'));
-        itemInLocalStorage.push({ quantity: 1, item: item });
-        localStorage.setItem('cartLocal', JSON.stringify(itemInLocalStorage));
+
+        let index = itemInLocalStorage
+          .map((i) => i.item._id)
+          .indexOf(product.id);
+
+        if (index !== -1) {
+          itemInLocalStorage[index].quantity =
+            Number(itemInLocalStorage[index].quantity) + 1;
+          localStorage.setItem('cartLocal', JSON.stringify(itemInLocalStorage));
+          setCart(itemInLocalStorage);
+        } else {
+          itemInLocalStorage.push({ quantity: 1, item: item });
+          localStorage.setItem('cartLocal', JSON.stringify(itemInLocalStorage));
+          setCart(itemInLocalStorage);
+        }
       } else {
         let itemLocalStorage = [{ quantity: 1, item: item }];
         console.log(itemLocalStorage);

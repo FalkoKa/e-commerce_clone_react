@@ -36,7 +36,7 @@ export default function ShoppingCart(props) {
             Your bag ({cart.length === 1 ? '1 item' : `${cart.length} items`})
           </h3>
           {cart.map((item) => (
-            <Item key={item._id} item={item.item} />
+            <Item key={item._id} quant={item.quantity} item={item.item} />
           ))}
         </div>
 

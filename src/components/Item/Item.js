@@ -4,13 +4,23 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import axios from 'axios';
 import { userContext } from '../../userConext';
 
-export default function Item({ item }) {
+export default function Item({ item, quant }) {
   let { user, setCart } = useContext(userContext);
 
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(quant);
+
+  console.log('quant: ' + quant);
+  console.log('quantity : ' + quantity);
+  // console.log('quant: ' + quant)
 
   const changeQuantity = (e) => {
     setQuantity(e.target.value);
+
+    let itemInLocalStorage = JSON.parse(localStorage.getItem('cartLocal'));
+    let index = itemInLocalStorage.map((i) => i.item._id).indexOf(item._id);
+    itemInLocalStorage[index].quantity = e.target.value;
+    localStorage.setItem('cartLocal', JSON.stringify(itemInLocalStorage));
+    setCart(itemInLocalStorage);
   };
 
   const removeFromCart = (e) => {
@@ -60,7 +70,7 @@ export default function Item({ item }) {
           <option value={9}>9</option>
           <option value={10}>10</option>
         </select>
-        <p>{item.price.toFixed(2)} USD</p>
+        <p>{(item.price * quantity).toFixed(2)} USD</p>
       </div>
     </div>
   );
