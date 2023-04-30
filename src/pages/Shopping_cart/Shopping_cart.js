@@ -7,11 +7,23 @@ import FooterTwo from '../../components/Fotter_two/Footer_two';
 import Item from '../../components/Item/Item';
 import creditCardImg from './../../images/credit_card_white.png';
 import OrderTotal from '../../components/Order_total/Order_total';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { userContext } from '../../userConext';
+import axios from 'axios';
 
 export default function ShoppingCart(props) {
-  const { user, cart } = useContext(userContext);
+  const { user, cart, setCart } = useContext(userContext);
+
+  useEffect(() => {
+    if (user) {
+      axios.get(`api/v1/cart/${user._id}`).then((res) => {
+        console.log(res.data.items);
+        setCart(res.data.items);
+      });
+    } else {
+      setCart(JSON.parse(localStorage.getItem('cartLocal') || '[]'));
+    }
+  }, [user]);
 
   return (
     <div className="shopping-cart">

@@ -38,11 +38,23 @@ export default function ProcutDetails() {
   }, [product.id]);
 
   const addToCart = (e) => {
-    axios
-      .post(`/api/v1/cart/${user._id}`, { itemId: product.id })
-      .then((res) => {
-        setCart(res.data.items);
-      });
+    if (user) {
+      axios
+        .post(`/api/v1/cart/${user._id}`, { itemId: product.id })
+        .then((res) => {
+          setCart(res.data.items);
+        });
+    } else {
+      if (localStorage.getItem('cartLocal') !== null) {
+        let itemInLocalStorage = JSON.parse(localStorage.getItem('cartLocal'));
+        itemInLocalStorage.push({ quantity: 1, item: item });
+        localStorage.setItem('cartLocal', JSON.stringify(itemInLocalStorage));
+      } else {
+        let itemLocalStorage = [{ quantity: 1, item: item }];
+        console.log(itemLocalStorage);
+        localStorage.setItem('cartLocal', JSON.stringify(itemLocalStorage));
+      }
+    }
   };
 
   return (

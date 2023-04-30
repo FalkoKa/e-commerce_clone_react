@@ -21,7 +21,12 @@ export default function Item({ item }) {
           setCart(res.data.items);
         });
     } else {
-      return; // later remove from local storage
+      let itemsInLocal = JSON.parse(localStorage.getItem('cartLocal'));
+      const newItemsInLocal = itemsInLocal.filter((i) =>
+        i.item._id !== item._id ? true : false
+      );
+      localStorage.setItem('cartLocal', JSON.stringify(newItemsInLocal));
+      setCart(newItemsInLocal);
     }
   };
 

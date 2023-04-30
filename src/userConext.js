@@ -8,17 +8,17 @@ export function UserProvider(props) {
   const [user, setUser] = useState(getUser());
   const [cart, setCart] = useState([]);
 
-  useEffect(() => {
-    if (user) {
-      axios.get(`api/v1/cart/${user._id}`).then((res) => {
-        console.log(res.data.items);
-        setCart(res.data.items);
-      });
-    } else {
-      // later local storage
-      return;
-    }
-  }, [user]);
+  // useEffect(() => {
+  //   if (user) {
+  //     axios.get(`api/v1/cart/${user._id}`).then((res) => {
+  //       console.log(res.data.items);
+  //       setCart(res.data.items);
+  //     });
+  //   } else {
+  //     // later local storage
+  //     return;
+  //   }
+  // }, [user]);
 
   const login = (data) => {
     setUser(data);
