@@ -17,6 +17,10 @@ export default function OrderConfirmation({ handleNext }) {
     console.log(orderToSubmit);
     axios.post(`/api/v1/order/new`, orderToSubmit);
     setCart([]);
+    axios
+      .delete(`/api/v1/cart/delete/${user._id}`)
+      .then((res) => console.log(res))
+      .catch((error) => console.log(error));
     localStorage.removeItem('cartLocal');
   };
 
