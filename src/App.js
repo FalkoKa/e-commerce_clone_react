@@ -13,6 +13,7 @@ import About from './pages/About';
 import Checkout from './pages/Checkout/Checkout';
 import Protected from './utils/protectedRoute';
 import Profile from './pages/Profile/Profile';
+import AdminDashboard from './pages/Admin_dashboard';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
           />
           <Route path="/order/:id" element={<CheckoutSuccess />} />
           <Route path="/about" element={<About />} />
+          <Route path="/admin" element={<AdminDashboard />} />
         </Routes>
       </BrowserRouter>
     </>
