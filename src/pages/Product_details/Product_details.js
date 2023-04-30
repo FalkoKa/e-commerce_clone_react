@@ -31,6 +31,10 @@ export default function ProcutDetails() {
   const [hasPurchased, setHasPurchased] = useState(false);
   const [value, setValue] = useState(0);
 
+  // useEffect() return from server if order with userID and productID exists (true or false,) -> set hasPurchased ? true : false
+
+  // send to server increment of rating and new calculated average of rating (send to product colellection with productID).then(update setItem)
+
   useEffect(() => {
     axios
       .get(`/api/v1/product/${product.id}`)

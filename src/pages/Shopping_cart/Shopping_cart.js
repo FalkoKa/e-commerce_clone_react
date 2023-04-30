@@ -12,13 +12,13 @@ import { userContext } from '../../userConext';
 import axios from 'axios';
 
 export default function ShoppingCart(props) {
-  const { user, cart, setCart } = useContext(userContext);
+  const { user, cart, setCart, setCartID } = useContext(userContext);
 
   useEffect(() => {
     if (user) {
       axios.get(`api/v1/cart/${user._id}`).then((res) => {
-        console.log(res.data.items);
         setCart(res.data.items);
+        setCartID(res.data._id);
       });
     } else {
       setCart(JSON.parse(localStorage.getItem('cartLocal') || '[]'));
@@ -36,7 +36,12 @@ export default function ShoppingCart(props) {
             Your bag ({cart.length === 1 ? '1 item' : `${cart.length} items`})
           </h3>
           {cart.map((item) => (
-            <Item key={item._id} quant={item.quantity} item={item.item} />
+            <Item
+              inOrder={false}
+              key={item._id}
+              quant={item.quantity}
+              item={item.item}
+            />
           ))}
         </div>
 

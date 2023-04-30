@@ -2,19 +2,22 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import CreditCards from './../../images/credit_card_white.png';
 import PayPal from './../../images/paypal.png';
+import { userContext } from '../../userConext';
 
-export default function PaymentMethod({ handleNext }) {
+export default function PaymentMethod({ handleNext, handleChange }) {
+  let { setOrder, order } = useContext(userContext);
   const [paymentMethod, setPaymentMethod] = useState('credit-debit');
 
-  const handleChange = (e) => {
+  const handleSelect = (e) => {
     setPaymentMethod(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setOrder({ ...order, paymentMethod: paymentMethod });
     handleNext();
   };
 
@@ -28,7 +31,7 @@ export default function PaymentMethod({ handleNext }) {
             aria-labelledby="demo-controlled-radio-buttons-group"
             name="payment_method"
             value={paymentMethod}
-            onChange={handleChange}
+            onChange={handleSelect}
           >
             <FormControlLabel
               value="credit-debit"

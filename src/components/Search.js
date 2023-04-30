@@ -3,7 +3,7 @@ import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import { useState } from 'react';
 
-export default function Search() {
+export default function Search({ onSearch }) {
   const [search, setSearch] = useState('');
 
   const Search = styled('div')(({ theme }) => ({

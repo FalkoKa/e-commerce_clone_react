@@ -7,6 +7,8 @@ export const userContext = createContext();
 export function UserProvider(props) {
   const [user, setUser] = useState(getUser());
   const [cart, setCart] = useState([]);
+  const [order, setOrder] = useState({});
+  const [cartID, setCartID] = useState(null);
 
   // useEffect(() => {
   //   if (user) {
@@ -36,6 +38,10 @@ export function UserProvider(props) {
     logout,
     cart,
     setCart,
+    order,
+    setOrder,
+    cartID,
+    setCartID,
   };
 
   return (

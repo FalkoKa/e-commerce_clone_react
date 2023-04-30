@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { userContext } from '../../userConext';
 
 export default function OrderTotal(props) {
-  let { cart } = useContext(userContext);
+  let { cart, setOrder, order } = useContext(userContext);
 
   const subtotal = () => {
     return cart
@@ -31,11 +31,16 @@ export default function OrderTotal(props) {
         <span>{deliveryFee.toFixed(2)} USD</span>
       </div>
       <div className="flex">
-        <span>Total (VAT included</span>
+        <span>Total (VAT included)</span>
         <span>{(subtotal() + deliveryFee).toFixed(2)} USD</span>
       </div>
 
-      <Link to={'/checkout'}>
+      <Link
+        onClick={() =>
+          setOrder({ ...order, subTotal: subtotal(), deliveryFee: deliveryFee })
+        }
+        to={'/checkout'}
+      >
         <div className="checkout-link">GO TO CHECKOUT</div>
       </Link>
     </div>

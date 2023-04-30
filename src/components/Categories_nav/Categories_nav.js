@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import './Categories_nav.css';
 import Search from '../Search';
 
-export default function CategoriesNav(props) {
+export default function CategoriesNav({ onSearch }) {
   return (
     <div className="cat-nav container-width-85">
       <nav>

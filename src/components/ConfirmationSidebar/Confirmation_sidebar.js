@@ -1,16 +1,31 @@
+import { useContext } from 'react';
+import { userContext } from '../../userConext';
+
 export default function ConfirmationSidebar() {
+  let { order, user } = useContext(userContext);
+
+  const renderPaymentMethod = (payMethod) => {
+    if (payMethod === 'paypal') {
+      return 'PayPal';
+    } else if (payMethod === 'credit-debit') {
+      return 'MasterCard / Visa';
+    }
+  };
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
       <div className="delivery-address">
         <h3>DELIEVERY ADDRESS</h3>
-        <p className="fullName">Falko Kammel</p>
-        <p className="address">Schoenauerstrasse 16</p>
-        <p className="zip-city">67547 Worms</p>
-        <p className="country">Germany</p>
+        <p className="fullName">{user.name}</p>
+        <p className="address">{order.shippingAddress.street}</p>
+        <p className="zip-city">
+          {order.shippingAddress.zipCode} {order.shippingAddress.city}
+        </p>
+        <p className="country">{order.shippingAddress.country}</p>
       </div>
       <div className="payment-info">
         <h3>PAYMENT METHOD</h3>
-        <p>MasterCard</p>
+        <p>{renderPaymentMethod(order.paymentMethod)}</p>
       </div>
       <div className="legal-notice">
         <p style={{ color: 'grey', fontSize: '0.8rem' }}>

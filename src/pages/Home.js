@@ -11,6 +11,11 @@ import { useEffect, useState } from 'react';
 
 export default function Home(props) {
   const [products, setProducts] = useState([]);
+  // const [isSearching, setIsSearching] = useState(false);
+
+  // const handleSearching = (bool) => {
+  //   setIsSearching(bool);
+  // };
 
   useEffect(() => {
     axios.get('/api/v1/product').then((res) => {
@@ -54,8 +59,11 @@ export default function Home(props) {
       <Slideshow slides={slides} />
 
       <div className="category container-width-85">
-        <h3>Our most popular brands</h3>
-        <Brands />
+        <>
+          <h3>Our most popular brands</h3>
+          <Brands />
+        </>
+
         <h3>Products</h3>
         <div className="product-grid">
           {products.map((product) => (
