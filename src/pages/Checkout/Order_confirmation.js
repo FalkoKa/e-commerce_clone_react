@@ -3,6 +3,7 @@ import Item from '../../components/Item/Item';
 import { useContext } from 'react';
 import { userContext } from '../../userConext';
 import axios from 'axios';
+import sendPaymentRequest from './../../utils/payment';
 
 export default function OrderConfirmation({ handleNext }) {
   let { user, order, cart, setCart } = useContext(userContext);
@@ -14,14 +15,18 @@ export default function OrderConfirmation({ handleNext }) {
       orderedItems: cart,
     };
 
-    console.log(orderToSubmit);
-    axios.post(`/api/v1/order/new`, orderToSubmit);
-    setCart([]);
-    axios
-      .delete(`/api/v1/cart/delete/${user._id}`)
-      .then((res) => console.log(res))
-      .catch((error) => console.log(error));
-    localStorage.removeItem('cartLocal');
+    sendPaymentRequest(cart)
+      .then((res) => {
+        console.log('test res: ' + res);
+        axios.post(`/api/v1/order/new`, orderToSubmit);
+        setCart([]);
+        axios
+          .delete(`/api/v1/cart/delete/${user._id}`)
+          .then((res) => console.log(res))
+          .catch((error) => console.log(error));
+        localStorage.removeItem('cartLocal');
+      })
+      .catch((err) => console.log('hmm:' + err));
   };
 
   return (
@@ -32,7 +37,6 @@ export default function OrderConfirmation({ handleNext }) {
 
           <div
             onClick={() => {
-              handleNext();
               handleOrderSubmit();
             }}
             className="order-confirmation-link"

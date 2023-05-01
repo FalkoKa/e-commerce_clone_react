@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { userContext } from '../../userConext';
 import './OrderSummary.css';
 import axios from 'axios';
+import Loading from '../Loading';
 
 export default function OrderSummary() {
   let { user } = useContext(userContext);
@@ -15,7 +16,9 @@ export default function OrderSummary() {
 
   return (
     <div className="order-summary">
-      {orders &&
+      {!orders ? (
+        <Loading />
+      ) : (
         orders.map((order) => (
           <div className="ordered-item">
             <h3>Order ID: {order._id}</h3>
@@ -24,7 +27,8 @@ export default function OrderSummary() {
             <p>Total: {order.subTotal + order.deliveryFee} USD</p>
             <h4>Status: {order.orderStatus}</h4>
           </div>
-        ))}
+        ))
+      )}
     </div>
   );
 }

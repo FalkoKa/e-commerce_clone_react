@@ -6,7 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import LockRoundedIcon from '@mui/icons-material/LockRounded';
 import './Login.css';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { useState, useContext } from 'react';
 import { userLogin } from '../../utils/user_api';
 import { userContext } from './../../userConext';
@@ -29,9 +29,12 @@ export default function Login() {
             email: formData.email,
           });
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err.response.data.message);
+          setError(err.response.data.message);
+        });
     } else {
-      setError('');
+      setError('Please enter your email and password');
     }
   };
 
@@ -39,8 +42,6 @@ export default function Login() {
     setError('');
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-  const navigate = useNavigate();
 
   if (user) {
     return <Navigate to="/home" replace />;
@@ -86,6 +87,9 @@ export default function Login() {
             </FormControl>
             <button>Login</button>
           </form>
+
+          {error.length > 0 ? <p>{error}</p> : <p></p>}
+
           <Link>Forgotten your password?</Link>
           <div className="border-bottom"></div>
         </div>

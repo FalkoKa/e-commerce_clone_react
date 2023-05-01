@@ -13,7 +13,6 @@ const steps = ['Login', 'Address', 'Payment', 'Confirm', 'Done!'];
 
 export default function Checkout(props) {
   const [activeStep, setActiveStep] = useState(1);
-  const [skipped, setSkipped] = useState(new Set());
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -41,7 +40,7 @@ export default function Checkout(props) {
         {activeStep === 1 ? <Address handleNext={handleNext} /> : ''}
         {activeStep === 2 ? <PaymentMethod handleNext={handleNext} /> : ''}
         {activeStep === 3 ? <OrderConfirmation handleNext={handleNext} /> : ''}
-        {activeStep === 4 ? <CheckoutSuccess /> : ''}
+        {/* {activeStep === 4 ? <CheckoutSuccess /> : ''} */}
       </div>
     </>
   );

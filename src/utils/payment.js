@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-export default function sendPaymentRequest(orderObject) {
-  axios
+export default function sendPaymentRequest(cart) {
+  return axios
     .post('/create-checkout-session', {
-      items: orderObject.orderedItems,
+      items: cart,
     })
     .then((res) => {
       console.log(res);

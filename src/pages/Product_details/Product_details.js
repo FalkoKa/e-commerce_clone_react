@@ -7,6 +7,7 @@ import RatingStars from '../../components/RatingStars/RatingStars';
 import FavoriteListIcon from '../../components/FavoriteListIcon';
 import Rating from '@mui/material/Rating';
 import axios from 'axios';
+import Loading from '../../components/Loading';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useContext } from 'react';
@@ -78,7 +79,9 @@ export default function ProcutDetails() {
       <Header />
       <NavBar />
       <CategoryNav />
-      {item && (
+      {!item ? (
+        <Loading />
+      ) : (
         <div className="product-details container-width-85">
           <div className="product-img">
             <img src={item.images[0]} alt="Product" />

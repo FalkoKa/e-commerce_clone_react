@@ -44,7 +44,14 @@ function App() {
               </Protected>
             }
           />
-          <Route path="/order/:id" element={<CheckoutSuccess />} />
+          <Route
+            path="/checkout/success"
+            element={
+              <Protected>
+                <CheckoutSuccess />
+              </Protected>
+            }
+          />
           <Route path="/about" element={<About />} />
           <Route path="/admin" element={<AdminDashboard />} />
         </Routes>
