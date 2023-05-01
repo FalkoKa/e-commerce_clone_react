@@ -8,11 +8,15 @@ import sendPaymentRequest from './../../utils/payment';
 export default function OrderConfirmation({ handleNext }) {
   let { user, order, cart, setCart } = useContext(userContext);
 
+  console.log(cart);
+
   const handleOrderSubmit = () => {
     const orderToSubmit = {
       ...order,
       id: user._id,
-      orderedItems: cart,
+      orderedItems: cart.map((i) => {
+        return { quantity: i.quantity, items: i.item._id };
+      }),
     };
 
     sendPaymentRequest(cart)

@@ -37,6 +37,19 @@ export default function ProcutDetails() {
   // send to server increment of rating and new calculated average of rating (send to product colellection with productID).then(update setItem)
 
   useEffect(() => {
+    if (user) {
+      axios
+        .get(`/api/v1/order/id/${user._id}`, { itemID: product.id })
+        .then((res) => {
+          console.log(res.data);
+          setHasPurchased(res.data.purchased);
+        });
+    } else {
+      return;
+    }
+  }, [product.id]);
+
+  useEffect(() => {
     axios
       .get(`/api/v1/product/${product.id}`)
       .then((res) => setItem(res.data.product));
@@ -44,11 +57,18 @@ export default function ProcutDetails() {
 
   const addToCart = (e) => {
     if (user) {
-      axios
-        .post(`/api/v1/cart/${user._id}`, { itemId: product.id })
-        .then((res) => {
-          setCart(res.data.items);
-        });
+      axios.get(`/api/v1/cart/${user._id}`).then((res) => {
+        let itemIDs = res.data.items.map((i) => i.item._id);
+        if (itemIDs.includes(product.id)) {
+          return;
+        } else {
+          axios
+            .post(`/api/v1/cart/${user._id}`, { itemId: product.id })
+            .then((res) => {
+              setCart(res.data.items);
+            });
+        }
+      });
     } else {
       if (localStorage.getItem('cartLocal') !== null) {
         let itemInLocalStorage = JSON.parse(localStorage.getItem('cartLocal'));

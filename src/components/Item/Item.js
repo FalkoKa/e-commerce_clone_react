@@ -5,18 +5,30 @@ import axios from 'axios';
 import { userContext } from '../../userConext';
 
 export default function Item({ item, quant, inOrder }) {
-  let { user, setCart } = useContext(userContext);
+  let { user, setCart, cart } = useContext(userContext);
 
   const [quantity, setQuantity] = useState(quant);
 
   const changeQuantity = (e) => {
-    setQuantity(e.target.value);
+    if (user) {
+      setQuantity(e.target.value);
+      axios
+        .put(`/api/v1/cart/${user._id}`, {
+          quantity: Number(e.target.value),
+          itemID: item._id,
+        })
+        .then((res) => {
+          setCart(res.data.items);
+        });
+    } else {
+      setQuantity(e.target.value);
 
-    let itemInLocalStorage = JSON.parse(localStorage.getItem('cartLocal'));
-    let index = itemInLocalStorage.map((i) => i.item._id).indexOf(item._id);
-    itemInLocalStorage[index].quantity = e.target.value;
-    localStorage.setItem('cartLocal', JSON.stringify(itemInLocalStorage));
-    setCart(itemInLocalStorage);
+      let itemInLocalStorage = JSON.parse(localStorage.getItem('cartLocal'));
+      let index = itemInLocalStorage.map((i) => i.item._id).indexOf(item._id);
+      itemInLocalStorage[index].quantity = e.target.value;
+      localStorage.setItem('cartLocal', JSON.stringify(itemInLocalStorage));
+      setCart(itemInLocalStorage);
+    }
   };
 
   const removeFromCart = (e) => {

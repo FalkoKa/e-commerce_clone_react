@@ -16,7 +16,7 @@ export default function ShoppingCart(props) {
 
   useEffect(() => {
     if (user) {
-      axios.get(`api/v1/cart/${user._id}`).then((res) => {
+      axios.get(`/api/v1/cart/${user._id}`).then((res) => {
         setCart(res.data.items);
         setCartID(res.data._id);
       });
