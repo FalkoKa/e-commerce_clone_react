@@ -9,6 +9,8 @@ import Brands from '../components/Brands/Brands';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
+import sendPaymentRequest from '../utils/payment';
+
 export default function Home(props) {
   const [products, setProducts] = useState([]);
   // const [isSearching, setIsSearching] = useState(false);
@@ -63,6 +65,25 @@ export default function Home(props) {
           <h3>Our most popular brands</h3>
           <Brands />
         </>
+
+        <button
+          onClick={() =>
+            sendPaymentRequest({
+              orderedItems: [
+                {
+                  quantity: 1,
+                  _id: '644be433ab6839e85e8e37c6',
+                },
+                {
+                  quantity: 1,
+                  _id: '644b97a7fe223e402aa02e10',
+                },
+              ],
+            })
+          }
+        >
+          Pay
+        </button>
 
         <h3>Products</h3>
         <div className="product-grid">
