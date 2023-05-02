@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2705acc6.css",
+    "main.js": "/static/js/main.6b69e7b0.js",
+    "static/media/puma_poster.png": "/static/media/puma_poster.b1abb4189172a6a4cf06.png",
+    "static/media/credit_card_white.png": "/static/media/credit_card_white.f1f503bc8a92e5af0bd4.png",
+    "static/media/delivery_options.png": "/static/media/delivery_options.37d4388248b24ef88379.png",
+    "static/media/credit_card.png": "/static/media/credit_card.118f2903f2c2f751fa69.png",
+    "index.html": "/index.html",
+    "main.2705acc6.css.map": "/static/css/main.2705acc6.css.map",
+    "main.6b69e7b0.js.map": "/static/js/main.6b69e7b0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2705acc6.css",
+    "static/js/main.6b69e7b0.js"
+  ]
+}
