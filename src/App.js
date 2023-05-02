@@ -14,6 +14,7 @@ import Checkout from './pages/Checkout/Checkout';
 import Protected from './utils/protectedRoute';
 import Profile from './pages/Profile/Profile';
 import AdminDashboard from './pages/Admin_dashboard';
+import Puma from './pages/Puma/Puma';
 
 function App() {
   return (
@@ -22,6 +23,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Welcome />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/puma" element={<Puma />} />
+          <Route path="/nike" element={<Home />} />
+          <Route path="/mango" element={<Home />} />
+          <Route path="/bershka" element={<Home />} />
           <Route path="/:category" element={<Category />} />
           <Route path="/:category/:id" element={<ProductDetails />} />
           <Route path="/login" element={<Login />} />

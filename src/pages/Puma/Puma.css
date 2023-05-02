@@ -1,0 +1,8 @@
+.brand-wrapper {
+  background-color: #efeff0;
+}
+
+.puma {
+  display: flex;
+  justify-content: space-between;
+}

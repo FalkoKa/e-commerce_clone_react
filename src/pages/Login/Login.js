@@ -7,12 +7,13 @@ import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import LockRoundedIcon from '@mui/icons-material/LockRounded';
 import './Login.css';
 import { Link, Navigate } from 'react-router-dom';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { userLogin } from '../../utils/user_api';
 import { userContext } from './../../userConext';
+import axios from 'axios';
 
 export default function Login() {
-  const { user, login } = useContext(userContext);
+  const { user, login, setCartID, setCart } = useContext(userContext);
   const [formData, setFormData] = useState({});
   const [error, setError] = useState('');
 
@@ -22,7 +23,6 @@ export default function Login() {
       userLogin(formData)
         .then((tokenAndUser) => {
           localStorage.setItem('token', tokenAndUser.token);
-          console.log(tokenAndUser);
           login({
             _id: tokenAndUser._id,
             name: tokenAndUser.name,

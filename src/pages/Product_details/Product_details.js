@@ -32,22 +32,19 @@ export default function ProcutDetails() {
   const [hasPurchased, setHasPurchased] = useState(false);
   const [value, setValue] = useState(0);
 
-  // useEffect() return from server if order with userID and productID exists (true or false,) -> set hasPurchased ? true : false
-
-  // send to server increment of rating and new calculated average of rating (send to product colellection with productID).then(update setItem)
-
-  useEffect(() => {
-    if (user) {
-      axios
-        .get(`/api/v1/order/id/${user._id}`, { itemID: product.id })
-        .then((res) => {
-          console.log(res.data);
-          setHasPurchased(res.data.purchased);
-        });
-    } else {
-      return;
-    }
-  }, [product.id]);
+  // useEffect(() => {
+  //   if (user) {
+  //     axios
+  //       .post(`/api/v1/order/id/${user._id}`, { itemID: product.id })
+  //       .then((res) => {
+  //         console.log(res.data);
+  //         setHasPurchased(res.data.purchased);
+  //       });
+  //     console.log(product.id);
+  //   } else {
+  //     return;
+  //   }
+  // }, [product.id]);
 
   useEffect(() => {
     axios
@@ -153,7 +150,6 @@ export default function ProcutDetails() {
             </div>
             <p>{availability(item.inStock)}</p>
           </div>
-          <button onClick={() => setHasPurchased(!hasPurchased)}>bought</button>
         </div>
       )}
       <FooterOne />

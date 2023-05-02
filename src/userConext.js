@@ -22,6 +22,21 @@ export function UserProvider(props) {
   //   }
   // }, [user]);
 
+  useEffect(() => {
+    if (user) {
+      axios
+        .get(`/api/v1/cart/${user._id}`)
+        .then((res) => {
+          console.log(res.data.items);
+          setCart(res.data.items);
+          setCartID(res.data._id);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      setCart(JSON.parse(localStorage.getItem('cartLocal') || '[]'));
+    }
+  }, [user]);
+
   const login = (data) => {
     setUser(data);
   };

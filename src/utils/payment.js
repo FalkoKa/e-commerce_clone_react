@@ -14,8 +14,5 @@ export default function sendPaymentRequest(cart) {
         return (window.location = res.data.url);
       }
       return Promise.reject(res.data);
-    })
-    .catch((e) => {
-      console.log(e);
     });
 }

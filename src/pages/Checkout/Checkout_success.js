@@ -15,7 +15,7 @@ export default function CheckoutSuccess() {
   const [activeStep, setActiveStep] = useState(5);
 
   useEffect(() => {
-    axios.get(`/api/v1/order/${user._id}`).then((res) => {
+    axios.get(`/api/v1/order/${user.id}`).then((res) => {
       console.log(res.data);
       setOrderID(res.data._id);
     });

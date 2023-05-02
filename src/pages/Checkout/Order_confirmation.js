@@ -18,10 +18,12 @@ export default function OrderConfirmation({ handleNext }) {
         return { quantity: i.quantity, items: i.item._id };
       }),
     };
+    console.log(orderToSubmit);
 
     sendPaymentRequest(cart)
       .then((res) => {
-        console.log('test res: ' + res);
+        const query = new URLSearchParams(window.location.search);
+
         axios.post(`/api/v1/order/new`, orderToSubmit);
         setCart([]);
         axios
@@ -29,8 +31,22 @@ export default function OrderConfirmation({ handleNext }) {
           .then((res) => console.log(res))
           .catch((error) => console.log(error));
         localStorage.removeItem('cartLocal');
+
+        // if (query.get('success')) {
+        //   axios.post(`/api/v1/order/new`, orderToSubmit);
+        //   setCart([]);
+        //   axios
+        //     .delete(`/api/v1/cart/delete/${user._id}`)
+        //     .then((res) => console.log(res))
+        //     .catch((error) => console.log(error));
+        //   localStorage.removeItem('cartLocal');
+        // }
+
+        // if (query.get('canceled')) {
+        //   console.log('order cancelled');
+        // }
       })
-      .catch((err) => console.log('hmm:' + err));
+      .catch((err) => console.log(err));
   };
 
   return (

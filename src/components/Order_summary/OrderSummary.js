@@ -9,10 +9,16 @@ export default function OrderSummary() {
   const [orders, setOrders] = useState(null);
 
   useEffect(() => {
-    axios.get(`/api/v1/order/all/${user._id}`).then((res) => {
+    axios.get(`/api/v1/order/all/${user.id}`).then((res) => {
       setOrders(res.data);
     });
   }, []);
+
+  useEffect(() => {
+    axios.get(`/api/v1/order/all/${user._id}`).then((res) => {
+      setOrders(res.data);
+    });
+  }, [user]);
 
   return (
     <div className="order-summary">
