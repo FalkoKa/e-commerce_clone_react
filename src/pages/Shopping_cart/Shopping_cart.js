@@ -17,7 +17,9 @@ export default function ShoppingCart(props) {
   useEffect(() => {
     if (user) {
       axios
-        .get(`/api/v1/cart/${user.id}`)
+        .get(
+          `http://e-commercecloneapi-production.up.railway.app/api/v1/cart/${user.id}`
+        )
         .then((res) => {
           console.log(res.data.items);
           setCart(res.data.items);

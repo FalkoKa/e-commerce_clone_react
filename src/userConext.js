@@ -25,7 +25,9 @@ export function UserProvider(props) {
   useEffect(() => {
     if (user) {
       axios
-        .get(`/api/v1/cart/${user._id}`)
+        .get(
+          `http://e-commercecloneapi-production.up.railway.app/api/v1/cart/${user._id}`
+        )
         .then((res) => {
           console.log(res.data.items);
           setCart(res.data.items);
@@ -63,19 +65,3 @@ export function UserProvider(props) {
     <userContext.Provider value={value}>{props.children}</userContext.Provider>
   );
 }
-
-// shopping cart state
-// add items if not logged in -> logal storage
-// add items if logged in -> db + the ones from local storage
-
-// stored like this : [{itemID, quantity}]
-
-// functions: addItemToCart, removeItemFromCart
-
-// getCart() to fetch data from db || from localStorage, save it in cart useState (getCart in cart_service.js)
-
-// backend
-// get cart: get the cart by userID
-// post cart: add one item to array by productID
-// remove cart: remove one item from array by productID
-// reset cart? after ordered from userID

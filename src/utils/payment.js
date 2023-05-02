@@ -2,9 +2,12 @@ import axios from 'axios';
 
 export default function sendPaymentRequest(cart) {
   return axios
-    .post('/create-checkout-session', {
-      items: cart,
-    })
+    .post(
+      'http://e-commercecloneapi-production.up.railway.app/create-checkout-session',
+      {
+        items: cart,
+      }
+    )
     .then((res) => {
       console.log(res);
       console.log('success');

@@ -32,7 +32,10 @@ export default function Signup(props) {
         return setError('Passwords do not macht');
       }
       axios
-        .post(`/api/v1/user/new`, { signupUser })
+        .post(
+          `http://e-commercecloneapi-production.up.railway.app/api/v1/user/new`,
+          { signupUser }
+        )
         .then((res) => {
           console.log(res.data);
         })

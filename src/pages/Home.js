@@ -19,9 +19,11 @@ export default function Home(props) {
   // };
 
   useEffect(() => {
-    axios.get('/api/v1/product').then((res) => {
-      setProducts(res.data.products);
-    });
+    axios
+      .get('http://e-commercecloneapi-production.up.railway.app/api/v1/product')
+      .then((res) => {
+        setProducts(res.data.products);
+      });
   }, []);
 
   const slides = [

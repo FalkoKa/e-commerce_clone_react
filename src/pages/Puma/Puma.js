@@ -17,10 +17,14 @@ export default function Puma() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    axios.get(`/api/v1/product/brand/puma`).then((res) => {
-      console.log(res.data);
-      setProducts(res.data);
-    });
+    axios
+      .get(
+        `http://e-commercecloneapi-production.up.railway.app/api/v1/product/brand/puma`
+      )
+      .then((res) => {
+        console.log(res.data);
+        setProducts(res.data);
+      });
   }, []);
 
   return (

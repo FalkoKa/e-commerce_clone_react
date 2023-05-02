@@ -9,15 +9,23 @@ export default function OrderSummary() {
   const [orders, setOrders] = useState(null);
 
   useEffect(() => {
-    axios.get(`/api/v1/order/all/${user.id}`).then((res) => {
-      setOrders(res.data);
-    });
+    axios
+      .get(
+        `http://e-commercecloneapi-production.up.railway.app/api/v1/order/all/${user.id}`
+      )
+      .then((res) => {
+        setOrders(res.data);
+      });
   }, []);
 
   useEffect(() => {
-    axios.get(`/api/v1/order/all/${user._id}`).then((res) => {
-      setOrders(res.data);
-    });
+    axios
+      .get(
+        `http://e-commercecloneapi-production.up.railway.app/api/v1/order/all/${user._id}`
+      )
+      .then((res) => {
+        setOrders(res.data);
+      });
   }, [user]);
 
   return (

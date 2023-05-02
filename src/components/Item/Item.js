@@ -13,10 +13,13 @@ export default function Item({ item, quant, inOrder }) {
     if (user) {
       setQuantity(e.target.value);
       axios
-        .put(`/api/v1/cart/${user._id}`, {
-          quantity: Number(e.target.value),
-          itemID: item._id,
-        })
+        .put(
+          `http://e-commercecloneapi-production.up.railway.app/api/v1/cart/${user._id}`,
+          {
+            quantity: Number(e.target.value),
+            itemID: item._id,
+          }
+        )
         .then((res) => {
           setCart(res.data.items);
         });
@@ -34,7 +37,10 @@ export default function Item({ item, quant, inOrder }) {
   const removeFromCart = (e) => {
     if (user) {
       axios
-        .delete(`/api/v1/cart/${user._id}`, { data: { itemId: item._id } })
+        .delete(
+          `http://e-commercecloneapi-production.up.railway.app/api/v1/cart/${user._id}`,
+          { data: { itemId: item._id } }
+        )
         .then((res) => {
           setCart(res.data.items);
         });

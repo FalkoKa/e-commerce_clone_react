@@ -48,24 +48,33 @@ export default function ProcutDetails() {
 
   useEffect(() => {
     axios
-      .get(`/api/v1/product/${product.id}`)
+      .get(
+        `http://e-commercecloneapi-production.up.railway.app/api/v1/product/${product.id}`
+      )
       .then((res) => setItem(res.data.product));
   }, [product.id]);
 
   const addToCart = (e) => {
     if (user) {
-      axios.get(`/api/v1/cart/${user._id}`).then((res) => {
-        let itemIDs = res.data.items.map((i) => i.item._id);
-        if (itemIDs.includes(product.id)) {
-          return;
-        } else {
-          axios
-            .post(`/api/v1/cart/${user._id}`, { itemId: product.id })
-            .then((res) => {
-              setCart(res.data.items);
-            });
-        }
-      });
+      axios
+        .get(
+          `http://e-commercecloneapi-production.up.railway.app/api/v1/cart/${user._id}`
+        )
+        .then((res) => {
+          let itemIDs = res.data.items.map((i) => i.item._id);
+          if (itemIDs.includes(product.id)) {
+            return;
+          } else {
+            axios
+              .post(
+                `http://e-commercecloneapi-production.up.railway.app/api/v1/cart/${user._id}`,
+                { itemId: product.id }
+              )
+              .then((res) => {
+                setCart(res.data.items);
+              });
+          }
+        });
     } else {
       if (localStorage.getItem('cartLocal') !== null) {
         let itemInLocalStorage = JSON.parse(localStorage.getItem('cartLocal'));

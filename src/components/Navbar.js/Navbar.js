@@ -8,7 +8,6 @@ import Badge from '@mui/material/Badge';
 
 export default function Navbar(props) {
   const { cart, user, logout } = useContext(userContext);
-  // const [count, setCount] = useState(cart.length);
 
   return (
     <div className="nav container-width-85">
