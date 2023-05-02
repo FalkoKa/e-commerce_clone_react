@@ -20,7 +20,9 @@ export default function Home(props) {
 
   useEffect(() => {
     axios
-      .get('http://e-commercecloneapi-production.up.railway.app/api/v1/product')
+      .get(
+        'https://e-commercecloneapi-production.up.railway.app/api/v1/product'
+      )
       .then((res) => {
         setProducts(res.data.products);
       });

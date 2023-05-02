@@ -7,7 +7,6 @@ import FooterTwo from '../components/Fotter_two/Footer_two';
 
 export default function Category(props) {
   let category = useParams();
-  console.log(category);
 
   return (
     <>
@@ -16,9 +15,6 @@ export default function Category(props) {
       <CategoriesNav />
       <div className="category container-width-85">
         <h1>{category.category}</h1>
-        {/* <Link to={'/home'}>
-          <div className="order-confirmation-link">Back Home</div>
-        </Link>{' '} */}
       </div>
       <FooterOne />
       <FooterTwo />

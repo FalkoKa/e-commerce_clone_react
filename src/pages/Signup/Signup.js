@@ -33,7 +33,7 @@ export default function Signup(props) {
       }
       axios
         .post(
-          `http://e-commercecloneapi-production.up.railway.app/api/v1/user/new`,
+          `https://e-commercecloneapi-production.up.railway.app/api/v1/user/new`,
           { signupUser }
         )
         .then((res) => {

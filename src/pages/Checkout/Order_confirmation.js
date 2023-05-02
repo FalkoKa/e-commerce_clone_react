@@ -25,13 +25,13 @@ export default function OrderConfirmation({ handleNext }) {
         const query = new URLSearchParams(window.location.search);
 
         axios.post(
-          `http://e-commercecloneapi-production.up.railway.app/api/v1/order/new`,
+          `https://e-commercecloneapi-production.up.railway.app/api/v1/order/new`,
           orderToSubmit
         );
         setCart([]);
         axios
           .delete(
-            `http://e-commercecloneapi-production.up.railway.app/api/v1/cart/delete/${user._id}`
+            `https://e-commercecloneapi-production.up.railway.app/api/v1/cart/delete/${user._id}`
           )
           .then((res) => console.log(res))
           .catch((error) => console.log(error));

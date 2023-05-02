@@ -18,7 +18,7 @@ export default function ShoppingCart(props) {
     if (user) {
       axios
         .get(
-          `http://e-commercecloneapi-production.up.railway.app/api/v1/cart/${user.id}`
+          `https://e-commercecloneapi-production.up.railway.app/api/v1/cart/${user.id}`
         )
         .then((res) => {
           console.log(res.data.items);

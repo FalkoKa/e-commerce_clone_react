@@ -14,7 +14,7 @@ export default function Item({ item, quant, inOrder }) {
       setQuantity(e.target.value);
       axios
         .put(
-          `http://e-commercecloneapi-production.up.railway.app/api/v1/cart/${user._id}`,
+          `https://e-commercecloneapi-production.up.railway.app/api/v1/cart/${user._id}`,
           {
             quantity: Number(e.target.value),
             itemID: item._id,
@@ -38,7 +38,7 @@ export default function Item({ item, quant, inOrder }) {
     if (user) {
       axios
         .delete(
-          `http://e-commercecloneapi-production.up.railway.app/api/v1/cart/${user._id}`,
+          `https://e-commercecloneapi-production.up.railway.app/api/v1/cart/${user._id}`,
           { data: { itemId: item._id } }
         )
         .then((res) => {

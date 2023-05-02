@@ -49,7 +49,7 @@ export default function ProcutDetails() {
   useEffect(() => {
     axios
       .get(
-        `http://e-commercecloneapi-production.up.railway.app/api/v1/product/${product.id}`
+        `https://e-commercecloneapi-production.up.railway.app/api/v1/product/${product.id}`
       )
       .then((res) => setItem(res.data.product));
   }, [product.id]);
@@ -58,7 +58,7 @@ export default function ProcutDetails() {
     if (user) {
       axios
         .get(
-          `http://e-commercecloneapi-production.up.railway.app/api/v1/cart/${user._id}`
+          `https://e-commercecloneapi-production.up.railway.app/api/v1/cart/${user._id}`
         )
         .then((res) => {
           let itemIDs = res.data.items.map((i) => i.item._id);
@@ -67,7 +67,7 @@ export default function ProcutDetails() {
           } else {
             axios
               .post(
-                `http://e-commercecloneapi-production.up.railway.app/api/v1/cart/${user._id}`,
+                `https://e-commercecloneapi-production.up.railway.app/api/v1/cart/${user._id}`,
                 { itemId: product.id }
               )
               .then((res) => {
