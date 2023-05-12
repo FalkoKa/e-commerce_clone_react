@@ -17,7 +17,7 @@ export default function CheckoutSuccess() {
   useEffect(() => {
     axios
       .get(
-        `https://e-commercecloneapi-production.up.railway.app/api/v1/order/${user.id}`
+        `https://e-commercecloneapi-production.up.railway.app/api/v1/order/${user._id}` // added _
       )
       .then((res) => {
         console.log(res.data);

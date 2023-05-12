@@ -11,7 +11,7 @@ export default function OrderSummary() {
   useEffect(() => {
     axios
       .get(
-        `https://e-commercecloneapi-production.up.railway.app/api/v1/order/all/${user.id}`
+        `https://e-commercecloneapi-production.up.railway.app/api/v1/order/all/${user._id}` // added _
       )
       .then((res) => {
         setOrders(res.data);

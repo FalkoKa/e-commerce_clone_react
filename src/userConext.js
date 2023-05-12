@@ -10,18 +10,6 @@ export function UserProvider(props) {
   const [order, setOrder] = useState({});
   const [cartID, setCartID] = useState(null);
 
-  // useEffect(() => {
-  //   if (user) {
-  //     axios.get(`api/v1/cart/${user._id}`).then((res) => {
-  //       console.log(res.data.items);
-  //       setCart(res.data.items);
-  //     });
-  //   } else {
-  //     // later local storage
-  //     return;
-  //   }
-  // }, [user]);
-
   useEffect(() => {
     if (user) {
       axios
