@@ -6,6 +6,7 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Logo from '../../components/Logo/Logo';
+import Loading from '../../components/Loading';
 
 const steps = ['Login', 'Address', 'Payment', 'Confirm', 'Done!'];
 
@@ -13,29 +14,36 @@ export default function CheckoutSuccess() {
   let { user } = useContext(userContext);
   const [orderID, setOrderID] = useState('');
   const [activeStep, setActiveStep] = useState(5);
-
-  // three states: loading, success, canceled
-
-  // if search params cancled -> display "pay later"
-  // if search params success -> display confirmation with order ID (create new order serverside and return order ID with json)
-  // loading
+  const [success, setSuccess] = useState('loading');
 
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
     console.log('query: ' + query);
+    if (query.get('success')) {
+      setSuccess('success');
+      axios
+        .get(
+          `https://e-commercecloneapi-production.up.railway.app/api/v1/order/${user._id}`
+        )
+        .then((res) => {
+          setOrderID(res.data._id);
+        });
+    } else {
+      setSuccess('canceled');
+    }
   }, []);
 
   // this can return any order, not the latest one!
-  useEffect(() => {
-    axios
-      .get(
-        `https://e-commercecloneapi-production.up.railway.app/api/v1/order/${user._id}` // added _
-      )
-      .then((res) => {
-        setOrderID(res.data._id);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get(
+  //       `https://e-commercecloneapi-production.up.railway.app/api/v1/order/${user._id}`
+  //     )
+  //     .then((res) => {
+  //       setOrderID(res.data._id);
+  //     });
+  // }, []);
 
   return (
     <>
@@ -57,11 +65,31 @@ export default function CheckoutSuccess() {
           </Stepper>
         </div>
         <div className="checkout-success">
-          <h1>Thanks for your order!</h1>
-          <p>Your order ID #{orderID}</p>
-          <Link to={'/home'}>
-            <div className="order-confirmation-link">Continue Shopping</div>
-          </Link>
+          {success === 'loading' ? <Loading /> : ''}
+          {success === 'canceled' ? (
+            <>
+              <h1>Order canceled</h1>
+              <p>
+                Continue to shop around and checkout when you are ready.
+              </p>{' '}
+              <Link to={'/home'}>
+                <div className="order-confirmation-link">Continue Shopping</div>
+              </Link>
+            </>
+          ) : (
+            ''
+          )}
+          {success === 'success' ? (
+            <>
+              <h1>Thanks for your order!</h1>
+              <p>Your order ID #{orderID}</p>
+              <Link to={'/home'}>
+                <div className="order-confirmation-link">Continue Shopping</div>
+              </Link>
+            </>
+          ) : (
+            ''
+          )}
         </div>
       </div>
     </>
