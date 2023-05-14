@@ -14,13 +14,25 @@ export default function CheckoutSuccess() {
   const [orderID, setOrderID] = useState('');
   const [activeStep, setActiveStep] = useState(5);
 
+  // three states: loading, success, canceled
+
+  // if search params cancled -> display "pay later"
+  // if search params success -> display confirmation with order ID (create new order serverside and return order ID with json)
+  // loading
+
+  useEffect(() => {
+    // Check to see if this is a redirect back from Checkout
+    const query = new URLSearchParams(window.location.search);
+    console.log('query: ' + query);
+  }, []);
+
+  // this can return any order, not the latest one!
   useEffect(() => {
     axios
       .get(
         `https://e-commercecloneapi-production.up.railway.app/api/v1/order/${user._id}` // added _
       )
       .then((res) => {
-        console.log(res.data);
         setOrderID(res.data._id);
       });
   }, []);

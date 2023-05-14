@@ -14,7 +14,7 @@ export function UserProvider(props) {
     if (user) {
       axios
         .get(
-          `http://e-commercecloneapi-production.up.railway.app/api/v1/cart/${user._id}`
+          `https://e-commercecloneapi-production.up.railway.app/api/v1/cart/${user._id}`
         )
         .then((res) => {
           console.log(res.data.items);

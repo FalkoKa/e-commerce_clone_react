@@ -50,7 +50,7 @@ function App() {
             }
           />
           <Route
-            path="/checkout/success"
+            path="/confirm"
             element={
               <Protected>
                 <CheckoutSuccess />
