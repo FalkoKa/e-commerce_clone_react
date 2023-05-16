@@ -21,8 +21,14 @@ export default function CheckoutSuccess() {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
     if (query.get('success')) {
-      setCart(localStorage.getItem('currentCart'));
-      setOrder(localStorage.getItem('currentOrder'));
+      setCart((prev) => {
+        let localCart = JSON.parse(localStorage.getItem('currentCart'));
+        return { ...prev, localCart };
+      });
+      setOrder((prev) => {
+        let localOrder = JSON.parse(localStorage.getItem('currentOrder'));
+        return [...prev, localOrder];
+      });
       console.log(order);
       console.log(cart);
       console.log(localStorage.getItem('currentCart'));

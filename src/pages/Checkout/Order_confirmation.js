@@ -8,8 +8,8 @@ export default function OrderConfirmation() {
   let { order, cart } = useContext(userContext);
 
   const handleOrderSubmit = () => {
-    localStorage.setItem('currentOrder', order);
-    localStorage.setItem('currentCart', cart);
+    localStorage.setItem('currentOrder', JSON.stringify(order));
+    localStorage.setItem('currentCart', JSON.stringify(cart));
     sendPaymentRequest(cart).catch((err) => console.log(err));
   };
 
