@@ -7,7 +7,6 @@ import StepLabel from '@mui/material/StepLabel';
 import OrderConfirmation from './Order_confirmation';
 import Address from '../../components/Address/Address';
 import PaymentMethod from '../../components/Payment_method/Payment_method';
-import CheckoutSuccess from './Checkout_success';
 
 const steps = ['Login', 'Address', 'Payment', 'Confirm', 'Done!'];
 
@@ -26,7 +25,7 @@ export default function Checkout(props) {
       <div className="container-width-60">
         <div className="stepper-wrapper">
           <Stepper activeStep={activeStep}>
-            {steps.map((label, index) => {
+            {steps.map((label) => {
               const stepProps = {};
               const labelProps = {};
               return (

@@ -11,7 +11,7 @@ import Loading from '../../components/Loading';
 const steps = ['Login', 'Address', 'Payment', 'Confirm', 'Done!'];
 
 export default function CheckoutSuccess() {
-  let { user, order, cart, setCart, setOrder } = useContext(userContext);
+  let { user, setCart } = useContext(userContext);
 
   const [orderID, setOrderID] = useState('');
   const [activeStep, setActiveStep] = useState(5);
@@ -51,7 +51,6 @@ export default function CheckoutSuccess() {
           );
         })
         .then((res) => {
-          console.log(res);
           setOrderID(res.data._id);
         })
         .catch((err) => console.log(err));
@@ -99,7 +98,9 @@ export default function CheckoutSuccess() {
           {success === 'success' ? (
             <>
               <h1>Thanks for your order!</h1>
-              <p>Your order ID #{orderID}</p>
+
+              {orderID.length > 0 ? <p>Your order ID #{orderID}</p> : <p></p>}
+
               <Link to={'/home'}>
                 <div className="order-confirmation-link">Continue Shopping</div>
               </Link>
