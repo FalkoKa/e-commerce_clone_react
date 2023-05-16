@@ -11,7 +11,7 @@ import Loading from '../../components/Loading';
 const steps = ['Login', 'Address', 'Payment', 'Confirm', 'Done!'];
 
 export default function CheckoutSuccess() {
-  let { user, order, cart, setCart } = useContext(userContext);
+  let { user, order, cart, setCart, setOrder } = useContext(userContext);
 
   const [orderID, setOrderID] = useState('');
   const [activeStep, setActiveStep] = useState(5);
@@ -21,6 +21,8 @@ export default function CheckoutSuccess() {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
     if (query.get('success')) {
+      setCart = localStorage.getItem('currentCart');
+      setOrder = localStorage.getItem('currentOrder');
       const orderToSubmit = {
         ...order,
         id: user._id,
@@ -37,6 +39,8 @@ export default function CheckoutSuccess() {
         )
         .then(() => {
           setCart([]);
+          localStorage.removeItem('currentOrder');
+          localStorage.removeItem('currentCart');
           localStorage.removeItem('cartLocal');
           axios.delete(
             `https://e-commercecloneapi-production.up.railway.app/api/v1/cart/delete/${user._id}`

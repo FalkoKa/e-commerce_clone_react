@@ -40,7 +40,6 @@ export default function Checkout(props) {
         {activeStep === 1 ? <Address handleNext={handleNext} /> : ''}
         {activeStep === 2 ? <PaymentMethod handleNext={handleNext} /> : ''}
         {activeStep === 3 ? <OrderConfirmation handleNext={handleNext} /> : ''}
-        {/* {activeStep === 4 ? <CheckoutSuccess /> : ''} */}
       </div>
     </>
   );
