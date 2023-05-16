@@ -21,19 +21,6 @@ export default function CheckoutSuccess() {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
     if (query.get('success')) {
-      // setCart((prev) => {
-      //   let localCart = JSON.parse(localStorage.getItem('currentCart'));
-      //   console.log(localCart);
-      //   return [...prev, localCart];
-      // });
-      // setOrder((prev) => {
-      //   let localOrder = JSON.parse(localStorage.getItem('currentOrder'));
-      //   console.log(localOrder);
-      //   return { ...prev, localOrder };
-      // });
-      // console.log(order);
-      // console.log(cart);
-
       const orderToSubmit = {
         ...JSON.parse(localStorage.getItem('currentOrder')),
         id: user._id,
@@ -43,7 +30,6 @@ export default function CheckoutSuccess() {
           }
         ),
       };
-      console.log(orderToSubmit);
       setSuccess('success');
       axios
         .post(
@@ -60,11 +46,12 @@ export default function CheckoutSuccess() {
           );
         })
         .then(() => {
-          axios.get(
+          return axios.get(
             `https://e-commercecloneapi-production.up.railway.app/api/v1/order/${user._id}`
           );
         })
         .then((res) => {
+          console.log(res);
           setOrderID(res.data._id);
         })
         .catch((err) => console.log(err));
@@ -80,17 +67,19 @@ export default function CheckoutSuccess() {
       </div>
       <div className="container-width-60">
         <div className="stepper-wrapper">
-          <Stepper activeStep={activeStep}>
-            {steps.map((label, index) => {
-              const stepProps = {};
-              const labelProps = {};
-              return (
-                <Step key={label} {...stepProps}>
-                  <StepLabel {...labelProps}>{label}</StepLabel>
-                </Step>
-              );
-            })}
-          </Stepper>
+          {success === 'success' && (
+            <Stepper activeStep={activeStep}>
+              {steps.map((label, index) => {
+                const stepProps = {};
+                const labelProps = {};
+                return (
+                  <Step key={label} {...stepProps}>
+                    <StepLabel {...labelProps}>{label}</StepLabel>
+                  </Step>
+                );
+              })}
+            </Stepper>
+          )}
         </div>
         <div className="checkout-success">
           {success === 'loading' ? <Loading /> : ''}
