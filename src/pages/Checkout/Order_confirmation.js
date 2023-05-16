@@ -6,35 +6,10 @@ import axios from 'axios';
 import sendPaymentRequest from './../../utils/payment';
 
 export default function OrderConfirmation({ handleNext }) {
-  let { user, order, cart, setCart } = useContext(userContext);
+  let { order, cart } = useContext(userContext);
 
   const handleOrderSubmit = () => {
-    const orderToSubmit = {
-      ...order,
-      id: user._id,
-      orderedItems: cart.map((i) => {
-        return { quantity: i.quantity, items: i.item._id };
-      }),
-    };
-    console.log(orderToSubmit);
-
-    sendPaymentRequest(cart)
-      .then((res) => {
-        // do this server side
-        axios.post(
-          `https://e-commercecloneapi-production.up.railway.app/api/v1/order/new`,
-          orderToSubmit
-        );
-        setCart([]);
-        axios
-          .delete(
-            `https://e-commercecloneapi-production.up.railway.app/api/v1/cart/delete/${user._id}`
-          )
-          .then((res) => console.log(res))
-          .catch((error) => console.log(error));
-        localStorage.removeItem('cartLocal');
-      })
-      .catch((err) => console.log(err));
+    sendPaymentRequest(cart).catch((err) => console.log(err));
   };
 
   return (

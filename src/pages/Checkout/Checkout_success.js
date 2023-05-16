@@ -11,7 +11,8 @@ import Loading from '../../components/Loading';
 const steps = ['Login', 'Address', 'Payment', 'Confirm', 'Done!'];
 
 export default function CheckoutSuccess() {
-  let { user } = useContext(userContext);
+  let { user, order, cart, setCart } = useContext(userContext);
+
   const [orderID, setOrderID] = useState('');
   const [activeStep, setActiveStep] = useState(5);
   const [success, setSuccess] = useState('loading');
@@ -21,14 +22,35 @@ export default function CheckoutSuccess() {
     const query = new URLSearchParams(window.location.search);
     console.log('query: ' + query);
     if (query.get('success')) {
+      const orderToSubmit = {
+        ...order,
+        id: user._id,
+        orderedItems: cart.map((i) => {
+          return { quantity: i.quantity, items: i.item._id };
+        }),
+      };
       setSuccess('success');
       axios
-        .get(
-          `https://e-commercecloneapi-production.up.railway.app/api/v1/order/${user._id}`
+        .post(
+          `https://e-commercecloneapi-production.up.railway.app/api/v1/order/new`,
+          orderToSubmit
         )
+        .then(() => {
+          setCart([]);
+          localStorage.removeItem('cartLocal');
+          axios.delete(
+            `https://e-commercecloneapi-production.up.railway.app/api/v1/cart/delete/${user._id}`
+          );
+        })
+        .then(() => {
+          axios.get(
+            `https://e-commercecloneapi-production.up.railway.app/api/v1/order/${user._id}`
+          );
+        })
         .then((res) => {
           setOrderID(res.data._id);
-        });
+        })
+        .catch((err) => console.log(err));
     } else {
       setSuccess('canceled');
     }

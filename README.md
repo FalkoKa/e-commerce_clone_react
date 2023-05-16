@@ -30,6 +30,7 @@ User can put items into the cart without logging in. The items in the cart will 
 - [ ] Brands and category sections
 - [ ] Pagination
 - [ ] Guest checkout
+- [ ] Product review option
 
 ## Screenshots
 
