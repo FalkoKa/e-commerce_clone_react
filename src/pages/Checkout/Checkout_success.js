@@ -23,16 +23,17 @@ export default function CheckoutSuccess() {
     if (query.get('success')) {
       setCart((prev) => {
         let localCart = JSON.parse(localStorage.getItem('currentCart'));
-        return { ...prev, localCart };
+        console.log(localCart);
+        return [...prev, localCart];
       });
       setOrder((prev) => {
         let localOrder = JSON.parse(localStorage.getItem('currentOrder'));
-        return [...prev, localOrder];
+        console.log(localOrder);
+        return { ...prev, localOrder };
       });
       console.log(order);
       console.log(cart);
-      console.log(localStorage.getItem('currentCart'));
-      console.log(localStorage.getItem('currentOrder'));
+
       const orderToSubmit = {
         ...order,
         id: user._id,
