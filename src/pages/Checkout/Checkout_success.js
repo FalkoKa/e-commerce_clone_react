@@ -20,7 +20,6 @@ export default function CheckoutSuccess() {
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
-    console.log('query: ' + query);
     if (query.get('success')) {
       const orderToSubmit = {
         ...order,
@@ -29,6 +28,7 @@ export default function CheckoutSuccess() {
           return { quantity: i.quantity, items: i.item._id };
         }),
       };
+      console.log(orderToSubmit);
       setSuccess('success');
       axios
         .post(
