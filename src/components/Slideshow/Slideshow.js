@@ -1,5 +1,5 @@
 import './Slideshow.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const rightArrowStyles = {
   position: 'absolute',
@@ -25,18 +25,6 @@ const leftArrowStyles = {
 
 export default function Slideshow({ slides }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  // useEffect(() => {
-  //   let id = setInterval(() => {
-  //     setCurrentIndex((prev) =>
-  //       currentIndex === slides.length - 1 ? (prev = 0) : prev + 1
-  //     );
-  //   }, 1000);
-
-  //   return function cleanup() {
-  //     clearInterval(id);
-  //   };
-  // }, []);
 
   const slideStyles = {
     backgroundImage: `url(${slides[currentIndex].url})`,
@@ -93,7 +81,6 @@ export default function Slideshow({ slides }) {
         >
           <h3>Check out our latest products</h3>
           <h2>{slides[currentIndex].title}</h2>
-          <p>{slides[currentIndex].text}</p>
         </div>
       </div>
     </div>

@@ -34,17 +34,6 @@ export default function CheckoutSuccess() {
     }
   }, []);
 
-  // this can return any order, not the latest one!
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       `https://e-commercecloneapi-production.up.railway.app/api/v1/order/${user._id}`
-  //     )
-  //     .then((res) => {
-  //       setOrderID(res.data._id);
-  //     });
-  // }, []);
-
   return (
     <>
       <div className="container-width-85">

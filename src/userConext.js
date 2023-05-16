@@ -17,7 +17,6 @@ export function UserProvider(props) {
           `https://e-commercecloneapi-production.up.railway.app/api/v1/cart/${user._id}`
         )
         .then((res) => {
-          console.log(res.data.items);
           setCart(res.data.items);
           setCartID(res.data._id);
         })

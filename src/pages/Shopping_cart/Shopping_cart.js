@@ -9,19 +9,15 @@ import creditCardImg from './../../images/credit_card_white.png';
 import OrderTotal from '../../components/Order_total/Order_total';
 import { useContext, useEffect } from 'react';
 import { userContext } from '../../userConext';
-import axios from 'axios';
+import { fetchCart } from '../../utils/dbFetch';
 
 export default function ShoppingCart(props) {
   const { user, cart, setCart, setCartID } = useContext(userContext);
 
   useEffect(() => {
     if (user) {
-      axios
-        .get(
-          `https://e-commercecloneapi-production.up.railway.app/api/v1/cart/${user._id}`
-        )
+      fetchCart(user._id)
         .then((res) => {
-          console.log(res.data.items);
           setCart(res.data.items);
           setCartID(res.data._id);
         })

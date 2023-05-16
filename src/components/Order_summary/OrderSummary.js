@@ -11,37 +11,33 @@ export default function OrderSummary() {
   useEffect(() => {
     axios
       .get(
-        `https://e-commercecloneapi-production.up.railway.app/api/v1/order/all/${user._id}` // added _
+        `https://e-commercecloneapi-production.up.railway.app/api/v1/order/all/${user._id}`
       )
       .then((res) => {
         setOrders(res.data);
       });
   }, []);
 
-  useEffect(() => {
-    axios
-      .get(
-        `https://e-commercecloneapi-production.up.railway.app/api/v1/order/all/${user._id}`
-      )
-      .then((res) => {
-        setOrders(res.data);
-      });
-  }, [user]);
-
   return (
     <div className="order-summary">
       {!orders ? (
         <Loading />
       ) : (
-        orders.map((order) => (
-          <div className="ordered-item">
-            <h3>Order ID: {order._id}</h3>
-            <h4>Payment: {order.payment}</h4>
-            <p>Ordered Items: {order.orderedItems.length}</p>
-            <p>Total: {order.subTotal + order.deliveryFee} USD</p>
-            <h4>Status: {order.orderStatus}</h4>
-          </div>
-        ))
+        <>
+          {orders.length === 0 ? (
+            <p>Nothing ordered yet.</p>
+          ) : (
+            orders.map((order) => (
+              <div className="ordered-item">
+                <h3>Order ID: {order._id}</h3>
+                <h4>Payment: {order.payment}</h4>
+                <p>Ordered Items: {order.orderedItems.length}</p>
+                <p>Total: {order.subTotal + order.deliveryFee} USD</p>
+                <h4>Status: {order.orderStatus}</h4>
+              </div>
+            ))
+          )}
+        </>
       )}
     </div>
   );

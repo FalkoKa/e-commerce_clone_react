@@ -8,8 +8,6 @@ import sendPaymentRequest from './../../utils/payment';
 export default function OrderConfirmation({ handleNext }) {
   let { user, order, cart, setCart } = useContext(userContext);
 
-  console.log(cart);
-
   const handleOrderSubmit = () => {
     const orderToSubmit = {
       ...order,
@@ -22,8 +20,7 @@ export default function OrderConfirmation({ handleNext }) {
 
     sendPaymentRequest(cart)
       .then((res) => {
-        const query = new URLSearchParams(window.location.search);
-
+        // do this server side
         axios.post(
           `https://e-commercecloneapi-production.up.railway.app/api/v1/order/new`,
           orderToSubmit
@@ -36,20 +33,6 @@ export default function OrderConfirmation({ handleNext }) {
           .then((res) => console.log(res))
           .catch((error) => console.log(error));
         localStorage.removeItem('cartLocal');
-
-        // if (query.get('success')) {
-        //   axios.post(`/api/v1/order/new`, orderToSubmit);
-        //   setCart([]);
-        //   axios
-        //     .delete(`/api/v1/cart/delete/${user._id}`)
-        //     .then((res) => console.log(res))
-        //     .catch((error) => console.log(error));
-        //   localStorage.removeItem('cartLocal');
-        // }
-
-        // if (query.get('canceled')) {
-        //   console.log('order cancelled');
-        // }
       })
       .catch((err) => console.log(err));
   };
