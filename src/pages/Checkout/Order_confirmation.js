@@ -2,10 +2,9 @@ import ConfirmationSidebar from '../../components/ConfirmationSidebar/Confirmati
 import Item from '../../components/Item/Item';
 import { useContext } from 'react';
 import { userContext } from '../../userConext';
-import axios from 'axios';
 import sendPaymentRequest from './../../utils/payment';
 
-export default function OrderConfirmation({ handleNext }) {
+export default function OrderConfirmation() {
   let { order, cart } = useContext(userContext);
 
   const handleOrderSubmit = () => {
@@ -64,7 +63,6 @@ export default function OrderConfirmation({ handleNext }) {
 
         <div
           onClick={() => {
-            handleNext();
             handleOrderSubmit();
           }}
           style={{ width: '250px', margin: '20px auto', cursor: 'pointer' }}
