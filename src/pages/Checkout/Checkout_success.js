@@ -21,25 +21,27 @@ export default function CheckoutSuccess() {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
     if (query.get('success')) {
-      setCart((prev) => {
-        let localCart = JSON.parse(localStorage.getItem('currentCart'));
-        console.log(localCart);
-        return [...prev, localCart];
-      });
-      setOrder((prev) => {
-        let localOrder = JSON.parse(localStorage.getItem('currentOrder'));
-        console.log(localOrder);
-        return { ...prev, localOrder };
-      });
-      console.log(order);
-      console.log(cart);
+      // setCart((prev) => {
+      //   let localCart = JSON.parse(localStorage.getItem('currentCart'));
+      //   console.log(localCart);
+      //   return [...prev, localCart];
+      // });
+      // setOrder((prev) => {
+      //   let localOrder = JSON.parse(localStorage.getItem('currentOrder'));
+      //   console.log(localOrder);
+      //   return { ...prev, localOrder };
+      // });
+      // console.log(order);
+      // console.log(cart);
 
       const orderToSubmit = {
-        ...order,
+        ...JSON.parse(localStorage.getItem('currentOrder')),
         id: user._id,
-        orderedItems: cart.map((i) => {
+        orderedItems: (localCart = JSON.parse(
+          localStorage.getItem('currentCart')
+        ).map((i) => {
           return { quantity: i.quantity, items: i.item._id };
-        }),
+        })),
       };
       console.log(orderToSubmit);
       setSuccess('success');
