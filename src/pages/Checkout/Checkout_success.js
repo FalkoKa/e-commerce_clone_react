@@ -23,6 +23,10 @@ export default function CheckoutSuccess() {
     if (query.get('success')) {
       setCart = localStorage.getItem('currentCart');
       setOrder = localStorage.getItem('currentOrder');
+      console.log(order);
+      console.log(cart);
+      console.log(localStorage.getItem('currentCart'));
+      console.log(localStorage.getItem('currentOrder'));
       const orderToSubmit = {
         ...order,
         id: user._id,
