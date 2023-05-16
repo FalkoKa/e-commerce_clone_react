@@ -21,8 +21,8 @@ export default function CheckoutSuccess() {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
     if (query.get('success')) {
-      setCart = localStorage.getItem('currentCart');
-      setOrder = localStorage.getItem('currentOrder');
+      setCart(localStorage.getItem('currentCart'));
+      setOrder(localStorage.getItem('currentOrder'));
       console.log(order);
       console.log(cart);
       console.log(localStorage.getItem('currentCart'));
