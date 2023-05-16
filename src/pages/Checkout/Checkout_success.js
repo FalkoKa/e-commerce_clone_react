@@ -37,11 +37,11 @@ export default function CheckoutSuccess() {
       const orderToSubmit = {
         ...JSON.parse(localStorage.getItem('currentOrder')),
         id: user._id,
-        orderedItems: (localCart = JSON.parse(
-          localStorage.getItem('currentCart')
-        ).map((i) => {
-          return { quantity: i.quantity, items: i.item._id };
-        })),
+        orderedItems: JSON.parse(localStorage.getItem('currentCart')).map(
+          (i) => {
+            return { quantity: i.quantity, items: i.item._id };
+          }
+        ),
       };
       console.log(orderToSubmit);
       setSuccess('success');
