@@ -8,12 +8,15 @@ import ProductCard from '../components/ProductCard/ProductCard';
 import Brands from '../components/Brands/Brands';
 import axios from 'axios';
 import Loading from '../components/Loading';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 import { useEffect, useState, useContext } from 'react';
 import { userContext } from '../userConext';
 import { fetchCart } from '../utils/dbFetch';
 
 export default function Home(props) {
   const [products, setProducts] = useState([]);
+  const [page, setPage] = useState(1);
   let { user, setCart, setCartID } = useContext(userContext);
 
   // const [isSearching, setIsSearching] = useState(false);
@@ -81,14 +84,33 @@ export default function Home(props) {
           <Brands />
         </>
         <h3>Products</h3>
-        <div className="product-grid">
-          {products.length === 0 ? (
-            <Loading />
-          ) : (
-            products.map((product) => (
-              <ProductCard key={product._id} product={product} />
-            ))
-          )}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            margin: '15px 0',
+          }}
+        >
+          <div className="product-grid">
+            {products.length === 0 ? (
+              <Loading />
+            ) : (
+              products
+                .slice((page - 1) * 8, (page - 1) * 8 + 8)
+                .map((product) => (
+                  <ProductCard key={product._id} product={product} />
+                ))
+            )}
+          </div>
+          <Stack spacing={2}>
+            <Pagination
+              onChange={(event, value) => {
+                setPage(value);
+              }}
+              count={Math.ceil(products.length / 8)}
+            />
+          </Stack>
         </div>
       </div>
       <FooterOne />
