@@ -28,7 +28,7 @@ User can put items into the cart without logging in. The items in the cart will 
 - [ ] Dropdown menus (profile and cart)
 - [ ] Responsiveness for mobile devices
 - [ ] Brands and category sections
-- [ ] Pagination
+- [x] Pagination
 - [ ] Guest checkout
 - [ ] Product review option
 
