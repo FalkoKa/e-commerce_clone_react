@@ -5,6 +5,22 @@
   position: relative;
 }
 
+.cart-icon:hover {
+  border: 2px solid black;
+  border-bottom: white;
+  z-index: 2;
+  background-color: white;
+}
+
+.dropdown-menu.hide {
+  display: none;
+}
+
+.nav nav a {
+  border: 2px solid transparent;
+  padding: 8px;
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -14,7 +30,8 @@
 
 .nav nav {
   display: flex;
-  gap: 30px;
+  gap: 15px;
+  align-items: center;
 }
 
 .nav button {
@@ -34,7 +51,7 @@
   flex-direction: column;
   gap: 5px;
   position: absolute;
-  top: 50px;
+  top: 45px;
   right: 0px;
   z-index: 1;
   background-color: white;
@@ -64,5 +81,9 @@
 @media only screen and (max-width: 800px) {
   .dropdown-menu {
     display: none;
+  }
+  .cart-icon:hover {
+    border: none;
+    padding: 0;
   }
 }

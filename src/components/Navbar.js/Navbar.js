@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Logo from '../Logo/Logo';
+import DropdownItem from '../DropdownItem';
 import './Navbar.css';
 import { CiUser, CiHeart, CiShoppingCart } from 'react-icons/ci';
 import { userContext } from '../../userConext';
@@ -34,7 +35,7 @@ export default function Navbar(props) {
         <Link to={''}>
           <CiHeart size={25} />
         </Link>
-        <Link to={'/cart'}>
+        <Link className="cart-icon" to={'/cart'}>
           <Badge color="secondary" badgeContent={cart.length}>
             <CiShoppingCart size={25} />
           </Badge>
@@ -42,7 +43,15 @@ export default function Navbar(props) {
       </nav>
       <div className="dropdown-menu">
         <h3>Your Cart</h3>
-        <div className="dropdwown-cart"></div>
+        <div className="dropdwown-cart">
+          {cart.map((item) => (
+            <DropdownItem
+              item={item.item}
+              quantity={item.quantity}
+              key={item._id}
+            />
+          ))}
+        </div>
         <div className="dropdown-summary">
           <div className="order-total">
             <div className="flex">
