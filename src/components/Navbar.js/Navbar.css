@@ -15,3 +15,15 @@
   display: flex;
   gap: 30px;
 }
+
+.nav button {
+  border: none;
+  background-color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.nav button:hover {
+  color: #717171;
+}
