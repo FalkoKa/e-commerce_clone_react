@@ -25,8 +25,8 @@ User can put items into the cart without logging in. The items in the cart will 
 - [ ] PayPal Checkout
 - [ ] Search Function
 - [ ] Add items stored in local storage to user cart upon login
-- [ ] Dropdown menus (profile and cart)
-- [ ] Responsiveness for mobile devices
+- [x] Dropdown menus (profile and cart)
+- [ ] Responsiveness for mobile devices (mobile navbar)
 - [ ] Brands and category sections
 - [x] Pagination
 - [ ] Guest checkout

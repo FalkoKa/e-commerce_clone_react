@@ -88,11 +88,10 @@
 }
 
 @media only screen and (max-width: 800px) {
-  .dropdown-menu {
+  .drop:hover .dropdown-menu {
     display: none;
   }
-  .cart-icon:hover {
-    border: none;
-    padding: 0;
+  .drop:hover {
+    border: 2px solid transparent;
   }
 }

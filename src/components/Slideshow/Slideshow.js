@@ -34,12 +34,7 @@ export default function Slideshow({ slides }) {
     backgroundSize: 'cover',
   };
 
-  const containerStyle = {
-    width: '50%',
-    height: '100%',
-    margin: 0,
-    position: 'relative',
-  };
+  const containerStyle = {};
 
   const goToPrevious = () => {
     const isFirstSlide = currentIndex === 0;
