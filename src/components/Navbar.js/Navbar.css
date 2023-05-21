@@ -63,6 +63,12 @@
   min-width: 300px;
 }
 
+.dropdown-cart {
+  max-height: 500px;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
 .cart-link {
   background-color: black;
   border: none;

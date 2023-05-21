@@ -22,31 +22,40 @@ export default function DropdownMenu() {
 
   return (
     <div className="dropdown-menu">
-      <h3>Your Cart</h3>
-      <div className="dropdwown-cart">
-        {cart.map((item) => (
-          <DropdownItem
-            item={item.item}
-            quantity={item.quantity}
-            key={item._id}
-          />
-        ))}
-      </div>
-      <div className="dropdown-summary">
-        <div className="order-total">
-          <div className="flex">
-            <span>Delivery</span>
-            <span>{deliveryFee.toFixed(2)} USD</span>
-          </div>
-          <div className="flex">
-            <span>Total</span>
-            <span>{(subtotal() + deliveryFee).toFixed(2)} USD</span>
-          </div>
-          <div className="cart-link">
-            <Link to={'/cart'}>Go to cart</Link>
-          </div>
+      {cart.length === 0 ? (
+        <div style={{ textAlign: 'center', width: '250px', margin: '0 auto' }}>
+          <h3>YOUR CART IS EMPTY</h3>
+          <p>Go. Go fill it up with all your fashion hopes and dreams.</p>
         </div>
-      </div>
+      ) : (
+        <>
+          <h3>Your Cart</h3>
+          <div className="dropdown-cart">
+            {cart.map((item) => (
+              <DropdownItem
+                item={item.item}
+                quantity={item.quantity}
+                key={item._id}
+              />
+            ))}
+          </div>
+          <div className="dropdown-summary">
+            <div className="order-total">
+              <div className="flex">
+                <span>Delivery</span>
+                <span>{deliveryFee.toFixed(2)} USD</span>
+              </div>
+              <div className="flex">
+                <span>Total</span>
+                <span>{(subtotal() + deliveryFee).toFixed(2)} USD</span>
+              </div>
+              <div className="cart-link">
+                <Link to={'/cart'}>Go to cart</Link>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }
