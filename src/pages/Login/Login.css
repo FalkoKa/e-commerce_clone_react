@@ -10,12 +10,12 @@
   gap: 30px;
   margin: 50px 0;
   position: relative;
+  border-bottom: 1px solid black;
 }
 
 .login-form {
   display: flex;
   flex-direction: column;
-
   gap: 30px;
 }
 
@@ -41,13 +41,6 @@
   margin: 20px 0;
 }
 
-.border-bottom {
-  border-bottom: 1px solid gray;
-  width: 100vw;
-  position: absolute;
-  bottom: 0;
-}
-
 .register-link {
   text-decoration: none;
   background-color: white;
@@ -65,4 +58,18 @@
   border: none;
   cursor: pointer;
   border: 2px solid gray;
+}
+
+@media only screen and (max-width: 950px) {
+  .login,
+  .signup {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .login,
+  .signup {
+    width: 85%;
+  }
 }

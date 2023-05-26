@@ -7,13 +7,12 @@ import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
 import LockRoundedIcon from '@mui/icons-material/LockRounded';
 import './Login.css';
 import { Link, Navigate } from 'react-router-dom';
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import { userLogin } from '../../utils/user_api';
 import { userContext } from './../../userConext';
-import axios from 'axios';
 
 export default function Login() {
-  const { user, login, setCartID, setCart } = useContext(userContext);
+  const { user, login } = useContext(userContext);
   const [formData, setFormData] = useState({});
   const [error, setError] = useState('');
 
@@ -91,7 +90,6 @@ export default function Login() {
           {error.length > 0 ? <p>{error}</p> : <p></p>}
 
           <Link>Forgotten your password?</Link>
-          <div className="border-bottom"></div>
         </div>
         <div className="new-here">
           <h2>I'm new here</h2>

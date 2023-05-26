@@ -42,9 +42,10 @@ User can put items into the cart without logging in. The items in the cart will 
 
 ![Product Overview](/src/images/product-overview.png)
 
-#### Shopping Cart
+#### Shopping Cart and interactive dropdown Shopping Cart
 
 ![Shopping Cart](/src/images/shopping-cart.png)
+<img src="./src/images/shopping_cart_dropdown.png" height="250">
 
 #### Checkout Process
 
