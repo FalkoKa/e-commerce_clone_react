@@ -54,7 +54,7 @@
     white-space: nowrap;
   }
 
-  img {
+  .item-summary img {
     display: none;
   }
 }
