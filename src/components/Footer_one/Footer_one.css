@@ -8,7 +8,7 @@
 
 .footer-one footer {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
 }
 
 .footer-one h3 {

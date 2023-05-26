@@ -30,7 +30,7 @@
 
 .price select {
   padding: 10px;
-  width: 100px;
+  min-width: 100px;
 }
 
 .price select:hover {
@@ -39,4 +39,22 @@
 
 .item p {
   margin: 5px;
+}
+
+@media only screen and (max-width: 650px) {
+  .item-summary {
+    display: block;
+  }
+
+  .item-info p {
+    height: 1.2rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 160px;
+    white-space: nowrap;
+  }
+
+  img {
+    display: none;
+  }
 }
